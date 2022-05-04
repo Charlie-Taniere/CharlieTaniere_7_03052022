@@ -1,0 +1,66 @@
+.button-home {
+    @include verticalCenter;
+    width: auto;
+    height: auto;
+    margin-top: 50px;
+
+    &_sign {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: aqua;
+        width: 20%;
+        height: auto;
+        border-bottom-left-radius: 20px;
+        border: solid $color-1 2px;
+        background-color: white;
+        border-right: solid $color-1 1px;
+        min-height: 70px;
+        align-self: flex-start;
+
+        &:hover {
+            background-color: #FD2D01;
+            cursor: pointer;
+        }
+
+        &_click {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            font-size: 18px;
+            min-height: 70px;
+        }
+    }
+
+    &_log {
+        display: flex;
+        justify-content: center;
+        width: 20%;
+        height: auto;
+        border-top-right-radius: 20px;
+        border: solid $color-1 2px;
+        background-color: white;
+        border-left: solid $color-1 1px;
+        align-self: flex-start;
+        min-height: 70px;
+
+        &:hover {
+            background-color: #FD2D01;
+            cursor: pointer;
+        }
+
+        &_click {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            font-size: 18px;
+            min-height: 70px;
+
+        }
+    }
+
+}

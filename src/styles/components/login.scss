@@ -1,0 +1,25 @@
+.login {
+    @include verticalCenter;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    border: solid, 3px, $color-1;
+    padding-top: 45px;
+
+    & label {
+        margin-top: 10px;
+    }
+
+    & input {
+        margin-bottom: 10px;
+    }
+
+   
+}
+
+.login_confirm {
+width: 50%;
+height: 30px;
+margin-bottom: 20px;
+margin-top: 20px;
+}
