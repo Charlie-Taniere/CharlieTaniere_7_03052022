@@ -2,6 +2,7 @@ import background from '../assets/background.png'
 import BannerHome from '../components/BannerHome'
 import ButtonHome from '../components/ButtonHome'
 import Sign from '../auth/Sign'
+import Footer from '../components/Footer'
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
     >
       <BannerHome />
       <ButtonHome />
+      <Footer />
     </div>
   )
 }
