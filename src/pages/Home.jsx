@@ -1,13 +1,13 @@
-import background from '../assets/background.png'
 import BannerHome from '../components/BannerHome'
 import ButtonHome from '../components/ButtonHome'
 import Sign from '../auth/Sign'
 import Footer from '../components/Footer'
+import background from '../assets/background.png'
 
 const Home = () => {
   return (
     <div
-      className="App"
+      className="home"
       style={{
         backgroundImage: `url(${background})`,
         backgroundRepeat: 'no-repeat',
