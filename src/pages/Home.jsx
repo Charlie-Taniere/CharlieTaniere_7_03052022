@@ -1,4 +1,4 @@
-import BannerHome from '../components/BannerHome'
+import BannerHome from '../components/Banner'
 import ButtonHome from '../components/ButtonHome'
 import Sign from '../auth/Sign'
 import Footer from '../components/Footer'

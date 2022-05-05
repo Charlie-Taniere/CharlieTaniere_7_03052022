@@ -1,0 +1,44 @@
+.banner {
+    @include verticalCenter;
+    flex-direction: column;
+
+    &_title {
+        @include verticalCenter;
+
+        h1 {
+            @include verticalCenter;
+            font-family: $font-1;
+            font-size: 30px;
+        }
+    }
+    & nav {
+        display: flex;
+        width: 60%;
+        height: auto;
+        justify-content: center;
+    }
+    & ul {
+        display: flex;
+        justify-content: center;
+
+
+        & li {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            text-align: center;
+            margin: 10px;
+            min-width: 170px;
+            min-height: 40px;
+            font-family: $font-1;
+            font-size: 20px;
+            height: auto;
+            width: auto;
+            border-radius: 15px;
+            border-color: black;
+            border: solid;
+     
+            
+        }
+    }
+}

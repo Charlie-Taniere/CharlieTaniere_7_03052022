@@ -1,21 +1,21 @@
 import React from 'react'
 
 const Login = () => {
+  event.StopPropagation()
   return (
     <form className="login">
-      <label className="login_label">Email : </label>
       <input
         className="login_input"
         type="text"
-        defaultValue=" "
+        placeholder="Email"
         onChange={(event) => {
           setEmail(event.target.value)
         }}
       ></input>
-      <label className="login_label">Mot de passe : </label>
       <input
         className="login_input"
         type="text"
+        placeholder="Mot de passe"
         onChange={(event) => {
           setPassword(event.target.value)
         }}
