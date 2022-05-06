@@ -4,19 +4,20 @@ import Login from '../auth/Login'
 import { useState } from 'react'
 
 const ButtonHome = () => {
-  // const [signIsOpen, setSign] = useState(false)
-  // onClick={() => setSign(!signIsOpen)}
-  // {signIsOpen ? <Sign /> : ''}
+  const [signIsOpen, setSign] = useState(false)
 
   const [loginIsOpen, setLogin] = useState(false)
-  // onClick={() => setLogin(!loginIsOpen)}
-  // {loginIsOpen ? <Login /> : ''}
 
   return (
     <div className="button-home">
       <div className="button-home_sign">
-        <span className="button-home_sign_click">Inscription</span>
-        {<Sign />}
+        <span
+          className="button-home_sign_click"
+          onClick={() => setSign(!signIsOpen)}
+        >
+          Inscription
+        </span>
+        {signIsOpen && <Sign />}
       </div>
 
       <div className="button-home_log">
@@ -26,7 +27,7 @@ const ButtonHome = () => {
         >
           Connexion
         </span>
-        {loginIsOpen ? <Login /> : ''}
+        {loginIsOpen && <Login />}
       </div>
     </div>
   )
