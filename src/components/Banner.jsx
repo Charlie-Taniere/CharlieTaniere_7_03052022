@@ -1,7 +1,8 @@
 import React from 'react'
 import groupomania from '../assets/groupomania.jpg'
 
-const BannerHome = () => {
+const Banner = () => {
+
   return (
     <header className="banner">
       <img className="banner_img" src={groupomania} alt="Logo de Groupomania" />
@@ -12,4 +13,4 @@ const BannerHome = () => {
   )
 }
 
-export default BannerHome
+export default Banner

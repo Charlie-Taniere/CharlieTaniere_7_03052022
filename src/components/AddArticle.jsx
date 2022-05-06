@@ -18,6 +18,14 @@ const Articles = () => {
   }
   return (
     <div className="article">
+      <textarea
+        className="article_textarea"
+        type="text"
+        placeholder="Ton texte"
+        onChange={(event) => {
+          setContent(event.target.value)
+        }}
+      ></textarea>
       <input
         className="article_input"
         type="text"
@@ -34,14 +42,7 @@ const Articles = () => {
           setDate(event.target.value)
         }}
       ></input>
-      <textarea
-        className="article_textarea"
-        type="text"
-        placeholder="Ton texte"
-        onChange={(event) => {
-          setContent(event.target.value)
-        }}
-      ></textarea>
+
       <button className="sign_confirm" type="submit" onClick={addArticle}>
         Valider
       </button>

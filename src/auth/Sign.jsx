@@ -10,20 +10,13 @@ const Sign = () => {
   const [error, setError] = useState(false)
 
   const addUser = () => {
-    const handleSubmit = (e) => {
-      e.preventDefault()
-      if (content.lenght === 0) {
-        setError(true)
-      } else {
-        Axios.post('http://localhost:3001/create', {
-          name: name,
-          lastname: lastname,
-          email: email,
-        }).then(() => {
-          console.log('succes')
-        })
-      }
-    }
+    Axios.post('http://localhost:3001/create', {
+      name: name,
+      lastname: lastname,
+      email: email,
+    }).then(() => {
+      console.log('succes')
+    })
   }
 
   return (

@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Login = () => {
-  event.StopPropagation()
   return (
     <form className="login">
       <input

@@ -1,7 +1,7 @@
 const NotFound = () => {
   return (
-    <div className="App">
-      <h1>Erreur 404 LOL</h1>
+    <div className="not-found">
+      <img className="not-found_img" src="https://i.imgflip.com/6f4u98.jpg" />
     </div>
   )
 }
