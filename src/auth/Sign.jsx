@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import Axios from 'axios'
+// import { Formik, Form, Field, ErrorMessage } from 'formik'
+// import * as Yup from 'yup'
 
 const Sign = () => {
   const [name, setName] = useState('')
@@ -9,11 +11,13 @@ const Sign = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState(false)
 
-  const addUser = () => {
-    Axios.post('http://localhost:3001/create', {
+  const addUser = (e) => {
+    e.preventDefault()
+    Axios.post('http://localhost:3001/auth', {
       name: name,
       lastname: lastname,
       email: email,
+      password: password,
     }).then(() => {
       console.log('succes')
     })
