@@ -7,45 +7,53 @@ function Registration() {
   const initialValues = {
     username: '',
     password: '',
+    email: '',
   }
 
   const validationSchema = Yup.object().shape({
-    username: Yup.string().min(3).max(15).required(),
-    password: Yup.string().min(4).max(20).required(),
+    username: Yup.string()
+      .min(3, '3 caractères minimum')
+      .max(15, ' 15 caractères maximum')
+      .required('Ce champ est obligatoire'),
+    password: Yup.string()
+      .min(6, '6 caractères minmum')
+      .max(20, '20 caractères maximum')
+      .required('Ce champ est obligatoire'),
+    email: Yup.string()
+      .min(4, '4 caractères minmum')
+      .max(25, '25 caractères minmum')
+      .required('Ce champ est obligatoire'),
   })
 
   const onSubmit = (data) => {
-    axios.post('http://localhost:3001/auth', data).then(() => {
-      console.log(data)
-    })
+    axios.post('http://localhost:3001/auth', data).then(() => {})
   }
 
   return (
     <div>
       <Formik
+        className="sign"
         initialValues={initialValues}
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
         <Form className="formContainer">
-          <label>Username: </label>
           <ErrorMessage name="username" component="span" />
-          <Field
-            // id="username"
-            name="username"
-            placeholder="(Ex. John123...)"
-          />
+          <Field name="username" placeholder="Pseudo" />
 
-          <label>Password: </label>
+          <ErrorMessage name="email" component="span" />
+          <Field type="email" name="email" placeholder="Email" />
+
           <ErrorMessage name="password" component="span" />
           <Field
             type="password"
-            // id="password"
             name="password"
-            placeholder="Your Password..."
+            placeholder="Tapez votre mot de passe"
           />
 
-          <button type="submit"> Register</button>
+          <button className="formContainer_submit" type="submit">
+            Valider
+          </button>
         </Form>
       </Formik>
     </div>
@@ -53,80 +61,3 @@ function Registration() {
 }
 
 export default Registration
-
-// import React from 'react'
-// import { useState } from 'react'
-// import Axios from 'axios'
-
-// const Sign = () => {
-//   const [name, setName] = useState('')
-//   const [lastname, setLastName] = useState('')
-//   const [email, setEmail] = useState('')
-//   const [password, setPassword] = useState('')
-//   const [error, setError] = useState(false)
-
-//   const addUser = (e) => {
-//     e.preventDefault()
-//     Axios.post('http://localhost:3001/auth', {
-//       name: name,
-//       lastname: lastname,
-//       email: email,
-//       password: password,
-//     }).then(() => {
-//       console.log('succes')
-//     })
-//   }
-
-//   return (
-//     <form className="sign" onSubmit={(e) => handleSubmit(e)}>
-//       <input
-//         className="sign_input"
-//         type="text"
-//         placeholder="Prénom"
-//         onChange={(event) => {
-//           setName(event.target.value)
-//         }}
-//       ></input>
-//       {error && <p>Veuillez renseigner votre prénom</p>}
-//       <input
-//         className="sign_input"
-//         type="text"
-//         placeholder="Nom"
-//         onChange={(event) => {
-//           setLastName(event.target.value)
-//         }}
-//       ></input>
-//       {error && <p>Veuillez renseigner votre nom</p>}
-//       <input
-//         className="sign_input"
-//         type="text"
-//         placeholder="Email"
-//         onChange={(event) => {
-//           setEmail(event.target.value)
-//         }}
-//       ></input>
-//       {error && <p>Veuillez renseigner votre email</p>}
-//       <input
-//         className="sign_input"
-//         type="text"
-//         placeholder="Mot de passe"
-//         onChange={(event) => {
-//           setPassword(event.target.value)
-//         }}
-//       ></input>
-//       <input
-//         className="sign_input"
-//         type="text"
-//         placeholder="Confirmez le mot de passe"
-//         onChange={(event) => {
-//           setPassword(event.target.value)
-//         }}
-//       ></input>
-//       <button className="sign_confirm" type="submit" onClick={addUser}>
-//         Valider
-//       </button>
-//     </form>
-//   )
-// }
-
-// export default Sign

@@ -1,24 +1,22 @@
-.login {
+.loginContainer {
     @include verticalCenter;
     width: 100%;
     height: auto;
     flex-direction: column;
-    border: solid, 3px, $color-1;
     padding-top: 45px;
-
 
     & input {
         margin-bottom: 20px;
         height: 25px;
         width: 70%;
     }
+    &_submit {
+        width: 50%;
+        height: 30px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        }
 
    
 }
 
-.login_confirm {
-width: 50%;
-height: 30px;
-margin-bottom: 20px;
-margin-top: 20px;
-}

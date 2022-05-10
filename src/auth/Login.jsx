@@ -1,43 +1,53 @@
-import React from 'react'
-import { useState } from 'react'
-import Axios from 'axios'
+import React, { useState, useContext } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router'
+import { AuthContext } from '../helpers/AuthContext'
 
-const Login = () => {
-  const [email, setEmail] = useState('')
+function Login() {
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const { setAuthState } = useContext(AuthContext)
 
-  const logUser = (e) => {
-    e.preventDefault()
-    Axios.post('http://localhost:3001/auth/login', {
-      email: email,
-      password: password,
-    }).then((response) => {
-      console.log(response)
+  let navigate = useNavigate()
+
+  const login = () => {
+    const data = { username: username, password: password }
+    axios.post('http://localhost:3001/auth/login', data).then((response) => {
+      if (response.data.error) {
+        alert(response.data.error)
+      } else {
+        localStorage.setItem('accessToken', response.data.token)
+        setAuthState({
+          username: response.data.username,
+          id: response.data.id,
+          status: true,
+        })
+        navigate('/auth/main')
+      }
     })
   }
 
   return (
-    <form className="login">
+    <div className="loginContainer">
       <input
-        className="login_input"
         type="text"
-        placeholder="Email"
+        placeholder="Pseudo"
         onChange={(event) => {
-          setEmail(event.target.value)
+          setUsername(event.target.value)
         }}
-      ></input>
+      />
       <input
-        className="login_input"
-        type="text"
+        type="password"
         placeholder="Mot de passe"
         onChange={(event) => {
           setPassword(event.target.value)
         }}
-      ></input>
-      <button className="sign_confirm" onClick={logUser}>
-        <span>Valider</span>
+      />
+
+      <button className="loginContainer_submit" onClick={login}>
+        Valider
       </button>
-    </form>
+    </div>
   )
 }
 

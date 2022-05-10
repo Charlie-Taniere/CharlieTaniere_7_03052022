@@ -1,4 +1,4 @@
-.sign {
+.formContainer {
     @include verticalCenter;
     width: 100%;
     height: auto;
@@ -10,13 +10,13 @@
         height: 25px;
         width: 70%;
     }
+    &_submit {
+        width: 50%;
+        height: 30px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        }
 
    
 }
 
-.sign_confirm {
-width: 50%;
-height: 30px;
-margin-bottom: 20px;
-margin-top: 20px;
-}
