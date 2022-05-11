@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import Main from './pages/Main'
 import NotFound from './pages/Notfound'
@@ -8,18 +8,28 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const App = () => {
-  const [authState, setAuthState] = useState(false)
+  const [authState, setAuthState] = useState({
+    username: '',
+    id: 0,
+    status: false,
+  })
 
   useEffect(() => {
     axios
       .get('http://localhost:3001/auth/auth', {
-        headers: { accessToken: localStorage.getItem('accesToken') },
+        headers: {
+          accessToken: localStorage.getItem('accessToken'),
+        },
       })
       .then((response) => {
         if (response.data.error) {
-          setAuthState(false)
+          setAuthState({ ...authState, status: false })
         } else {
-          setAuthState(true)
+          setAuthState({
+            username: response.data.username,
+            id: response.data.id,
+            status: true,
+          })
         }
       })
   }, [])
@@ -28,8 +38,13 @@ const App = () => {
     <AuthContext.Provider value={{ authState, setAuthState }}>
       <BrowserRouter>
         <Routes>
-          {!authState && <Route path="/" element={<Home />} />}
-          {authState && <Route path="/auth/main" element={<Main />} />}
+          <Route path="/" element={<Home />} />
+
+          <Route
+            path="/auth/main"
+            element={authState.status ? <Main /> : <Navigate to="/" />}
+          />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
