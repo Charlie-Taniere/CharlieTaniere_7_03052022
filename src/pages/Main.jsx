@@ -1,5 +1,5 @@
 import React from 'react'
-import Article from '../components/Article'
+
 import AddArticle from '../components/AddArticle'
 import Banner from '../components/Banner'
 import Footer from '../components/Footer'
@@ -10,9 +10,8 @@ const Main = () => {
     <div className="main">
       <Banner />
       <Navbar />
-      {/* <Article /> */}
       <AddArticle />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }
