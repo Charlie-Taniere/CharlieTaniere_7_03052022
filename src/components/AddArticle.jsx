@@ -2,12 +2,12 @@ import Axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
 
-const Articles = () => {
+const addArticles = () => {
   const [author, setAuthor] = useState('')
   const [content, setContent] = useState('')
   const [date, setDate] = useState('')
 
-  const addArticle = () => {
+  const pushArticle = () => {
     Axios.post('http://localhost:3001/article', {
       author: author,
       content: content,
@@ -17,7 +17,7 @@ const Articles = () => {
     })
   }
   return (
-    <div className="article">
+    <div className="add-article-container">
       <textarea
         className="article_textarea"
         type="text"
@@ -43,11 +43,11 @@ const Articles = () => {
         }}
       ></input>
 
-      <button className="sign_confirm" type="submit" onClick={addArticle}>
-        Valider
+      <button className="sign_confirm" type="submit" onClick={pushArticle}>
+        Publier
       </button>
     </div>
   )
 }
 
-export default Articles
+export default addArticles

@@ -1,0 +1,47 @@
+.nav-user {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+  
+
+&_logout-btn{
+    width: 120px;
+    height: 50px;
+    border-radius: 9px;
+    padding: 5px;
+    font-family: $font-1;
+    font-size: medium;
+    background-color: white;
+    text-align: center;
+    margin-right: 15px;
+    border-color: $color-1;
+
+    &:hover {
+        font-weight: bold;
+        cursor: pointer;
+
+    }
+
+}
+&_config {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    font-family: $font-1;
+    border-radius: 100px;
+    border-color: $color-1;
+    border: solid, 1px;
+    margin-right: 15px;
+    background-color: white;
+
+    &:hover {
+        cursor: pointer;
+
+    }
+}
+}
