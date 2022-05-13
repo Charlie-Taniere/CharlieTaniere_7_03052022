@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faUser } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router'
 import { AuthContext } from '../helpers/AuthContext'
+import CreatePost from '../components/CreatePost'
 
 const NavbarUser = () => {
   const { setAuthState } = useContext(AuthContext)
@@ -13,13 +14,17 @@ const NavbarUser = () => {
     setAuthState({ username: '', id: 0, status: false }, navigate('/'))
   }
 
+  const CreateArticle = () => {
+    navigate(<CreatePost />)
+  }
+
   return (
     <nav className="nav-user">
       <button className="nav-user_logout-btn" onClick={logout}>
         Déconnexion
       </button>
 
-      <button className="nav-user_config">
+      <button className="nav-user_config" onClick={CreateArticle}>
         <FontAwesomeIcon
           icon={faPlus}
           style={{ fontSize: 25, color: 'black' }}

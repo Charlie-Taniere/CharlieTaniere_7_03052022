@@ -1,0 +1,25 @@
+.create-post-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: solid 1px red;
+  width: 750px;
+  height: 500px;
+}
+
+.create-post-container_body {
+  height: 300px;
+  min-height: 300px;
+  width: 650px;
+  min-width: 650px;
+}
+/*# sourceMappingURL=createPost.css.map */

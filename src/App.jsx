@@ -41,7 +41,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
 
           <Route
-            path="/auth/main"
+            path="/main/:id"
             element={authState.status ? <Main /> : <Navigate to="/" />}
           />
 

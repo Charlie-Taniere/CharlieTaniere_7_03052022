@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import { AuthContext } from '../helpers/AuthContext'
 
 function Login() {
@@ -22,7 +22,7 @@ function Login() {
           id: response.data.id,
           status: true,
         })
-        navigate('/auth/main')
+        navigate(`/main/${response.data.id}`)
       }
     })
   }
