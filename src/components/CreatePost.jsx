@@ -20,8 +20,14 @@ function CreatePost() {
     }
   }, [])
   const validationSchema = Yup.object().shape({
-    title: Yup.string().required('Tu dois mettre un titre!'),
-    postText: Yup.string().required(),
+    title: Yup.string()
+      .min(1, '1 caractères minmum')
+      .max(50, '50 caractères maximum')
+      .required('Tu dois mettre un titre!'),
+    postText: Yup.string()
+      .min(20, '20 caractères minmum')
+      .max(350, '350 caractères maximum')
+      .required('Tu dois écrire quelque chose!'),
   })
 
   const onSubmit = (data) => {
@@ -41,19 +47,27 @@ function CreatePost() {
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
-        <Form className="formContainer">
+        <Form className="create-post-container_form">
           <ErrorMessage name="title" component="span" />
-          <Field name="title" placeholder="Ton titre!" />
+          <Field
+            className="create-post-container_form_title"
+            name="title"
+            placeholder="Ton titre!"
+          />
 
           <ErrorMessage name="postText" component="span" />
           <Field
-            className="create-post-container_body"
+            className="create-post-container_form_body"
             id="inputCreatePost"
             name="postText"
             placeholder="Qu'est-ce que tu raconte aujourd'hui?"
+            autoComplete="false"
           />
 
-          <button type="submit"> Publier</button>
+          <button type="submit" className="create-post-container_form_button">
+            {' '}
+            Publier
+          </button>
         </Form>
       </Formik>
     </div>

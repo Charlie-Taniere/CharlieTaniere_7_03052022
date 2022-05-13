@@ -11,7 +11,6 @@ const Main = () => {
       <Banner />
       <Navbar />
       <Post />
-      <CreatePost />
       <Footer />
     </div>
   )

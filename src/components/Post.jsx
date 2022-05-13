@@ -187,9 +187,11 @@
 import React, { useContext } from 'react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
-// import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt'
+import { Link, useNavigate } from 'react-router-dom'
+
 import { AuthContext } from '../helpers/AuthContext'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 
 function Post() {
   const [listOfPosts, setListOfPosts] = useState([])
@@ -256,22 +258,24 @@ function Post() {
     <div>
       {listOfPosts.map((value, key) => {
         return (
-          <div key={key} className="post">
-            <div className="title"> {value.title} </div>
+          <div key={key} className="post-container">
+            <div className="post-container_title"> {value.title} </div>
             <div
-              className="body"
+              className="post-container_body"
               onClick={() => {
                 navigate(`/post/${value.id}`)
               }}
             >
               {value.postText}
             </div>
-            <div className="footer">
-              <div className="username">
+            <div className="post-container_footer">
+              <div className="post-container_footer_username">
                 <Link to={`/profile/${value.UserId}`}> {value.username} </Link>
               </div>
-              {/* <div className="buttons">
-                <ThumbUpAltIcon
+              <div className="post-container_footer_buttons">
+                <FontAwesomeIcon
+                  icon={faThumbsUp}
+                  style={{ fontSize: 30, color: '#FD2D01', marginRight: 30 }}
                   onClick={() => {
                     likeAPost(value.id)
                   }}
@@ -281,7 +285,7 @@ function Post() {
                 />
 
                 <label> {value.Likes.length}</label>
-              </div> */}
+              </div>
             </div>
           </div>
         )

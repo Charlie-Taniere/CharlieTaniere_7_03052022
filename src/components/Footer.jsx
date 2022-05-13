@@ -5,7 +5,7 @@ import { faAt, faGlobe, faPhoneFlip } from '@fortawesome/free-solid-svg-icons'
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footera">
       <FontAwesomeIcon
         icon={faTwitter}
         style={{ fontSize: 30, color: 'white', marginRight: 30 }}

@@ -12,8 +12,9 @@
       -ms-flex-direction: column;
           flex-direction: column;
   border: solid 1px red;
-  width: 750px;
+  width: 600px;
   height: 500px;
+  background-color: grey;
 }
 
 .create-post-container_body {
@@ -21,5 +22,38 @@
   min-height: 300px;
   width: 650px;
   min-width: 650px;
+}
+
+.popup-content {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: blue;
+  width: 50% !important;
+  height: 300px;
+  left: 25% !important;
+  top: 25% !important;
+}
+
+.popup-arrow {
+  color: white;
+}
+
+[role='tooltip'].popup-content {
+  background-color: yellow;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+          box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.popup-overlay {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+[data-popup='tooltip'].popup-overlay {
+  background: rgba(255, 255, 255, 0.7);
 }
 /*# sourceMappingURL=createPost.css.map */

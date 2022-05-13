@@ -1,18 +1,77 @@
 .create-post-container {
-display: flex;
-margin: auto;
-align-items: center;
-border-radius: 10px;
-flex-direction: column;
-border: solid 1px red;
-width: 750px;
-height: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    border-radius: 10px;
+    flex-direction: column;
+    border: solid 2px $color-1;
+    background-color: white;
 
-&_body {
-    height: 300px;
-    min-height: 300px;
-    width: 650px;
-    min-width: 650px;
-    
+    &_form {
+        margin-top: 30px;
+        padding-top: 30px;
+
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+        min-height: 400px;
+
+        &_title {
+            margin-bottom: 10px;
+            width: 60%;
+            outline: none;
+        }
+
+        &_body {
+            width: 100%;
+            align-items:flex-start;
+            height: auto;
+            min-height: 300px;
+            flex-direction: column;
+            word-wrap: break-word;
+
+  padding: 20px;
+
+        }
+
+        &_button {
+            width: 50%;
+            height: 30px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+    }
+
+
+
 }
+
+.popup-content {
+    flex-direction: column;
+    width: 40% !important;
+    height: auto;
+    left: 30% !important;
+    top: 25% !important;
+
+}
+
+.popup-arrow {
+    color: rgb(255, 255, 255);
+}
+
+[role='tooltip'].popup-content {}
+
+.popup-overlay {
+    display: flex;
+    width: 100%;
+
+
+}
+
+[data-popup='tooltip'].popup-overlay {
+    background: rgba(255, 255, 255, 0.7);
+
 }
