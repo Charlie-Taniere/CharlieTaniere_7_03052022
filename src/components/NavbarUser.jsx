@@ -1,6 +1,10 @@
 import React, { useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faUser } from '@fortawesome/free-solid-svg-icons'
+import {
+  faPlus,
+  faUser,
+  faArrowRightFromBracket,
+} from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router'
 import { AuthContext } from '../helpers/AuthContext'
 import CreatePost from '../components/CreatePost'
@@ -17,8 +21,11 @@ const NavbarUser = () => {
 
   return (
     <nav className="nav-user">
-      <button className="nav-user_logout-btn" onClick={logout}>
-        Déconnexion
+      <button className="nav-user_config" onClick={logout}>
+        <FontAwesomeIcon
+          icon={faArrowRightFromBracket}
+          style={{ fontSize: 25, color: 'black' }}
+        />
       </button>
 
       <Popup

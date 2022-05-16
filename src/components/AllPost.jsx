@@ -98,7 +98,10 @@ function AllPost() {
                   }
                 />
 
-                <label> {value.Likes.length}</label>
+                <label className="post-container_footer_buttons_label">
+                  {' '}
+                  {value.Likes.length}
+                </label>
               </div>
             </div>
           </div>

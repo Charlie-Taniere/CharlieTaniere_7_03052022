@@ -107,71 +107,93 @@ function OnePost() {
   }
 
   return (
-    <div className="postPage">
-      <div className="leftSide">
-        <div className="post" id="individual">
-          <div
-            className="title"
-            onClick={() => {
-              if (authState.username === postObject.username) {
-                editPost('title')
-              }
-            }}
-          >
-            {postObject.title}
-          </div>
-          <div
-            className="body"
-            onClick={() => {
-              if (authState.username === postObject.username) {
-                editPost('body')
-              }
-            }}
-          >
-            {postObject.postText}
-          </div>
-          <div className="footer">
-            {postObject.username}
-            {authState.username === postObject.username && (
-              <button
-                onClick={() => {
-                  deletePost(postObject.id)
-                }}
-              >
-                {' '}
-                Delete Post
-              </button>
-            )}
-          </div>
+    <div className="one-post">
+      <div className="one-post_username">
+        <span className="one-post_username_color">Par : </span>
+        {postObject.username}
+      </div>
+      <div className="one-post_container" id="individual">
+        <div
+          className="one-post_container_title"
+          onClick={() => {
+            if (authState.username === postObject.username) {
+              editPost('title')
+            }
+          }}
+        >
+          {postObject.title}
+        </div>
+        <div
+          className="one-post_container_body"
+          onClick={() => {
+            if (authState.username === postObject.username) {
+              editPost('body')
+            }
+          }}
+        >
+          {postObject.postText}
+        </div>
+        <div className="one-post_container_footer">
+          {authState.username === postObject.username && (
+            <button
+              className="one-post_container_footer_btn"
+              onClick={() => {
+                deletePost(postObject.id)
+              }}
+            >
+              {' '}
+              Supprimer la publication
+            </button>
+          )}
         </div>
       </div>
-      <div className="rightSide">
-        <div className="addCommentContainer">
+
+      <div className="one-post_comment">
+        <div className="one-post_comment_add">
           <input
+            className="one-post_comment_add_input"
             type="text"
-            placeholder="Comment..."
+            minLength="5"
+            placeholder="Écrivez votre commentaire ici.."
             autoComplete="off"
             value={newComment}
             onChange={(event) => {
               setNewComment(event.target.value)
             }}
           />
-          <button onClick={addComment}> Add Comment</button>
+          <div className="one-post_comment_add_btn">
+            <button
+              className="one-post_comment_add_btn_btn"
+              onClick={addComment}
+            >
+              {' '}
+              Publier
+            </button>
+          </div>
         </div>
-        <div className="listOfComments">
+        <div className="one-post_comment_list">
           {comments.map((comment, key) => {
             return (
-              <div key={key} className="comment">
-                {comment.commentBody}
-                <label> Username: {comment.username}</label>
+              <div key={key} className="one-post_comment_list_comment">
+                <div>
+                  <label className="one-post_comment_list_comment_label">
+                    Par {comment.username}
+                  </label>
+                </div>
+                <div className="one-post_comment_list_comment_body">
+                  {comment.commentBody}
+                </div>
                 {authState.username === comment.username && (
-                  <button
-                    onClick={() => {
-                      deleteComment(comment.id)
-                    }}
-                  >
-                    X
-                  </button>
+                  <div className="one-post_comment_list_comment_btn">
+                    <button
+                      className="one-post_comment_list_comment_btn_btn"
+                      onClick={() => {
+                        deleteComment(comment.id)
+                      }}
+                    >
+                      Supprimer
+                    </button>
+                  </div>
                 )}
               </div>
             )
