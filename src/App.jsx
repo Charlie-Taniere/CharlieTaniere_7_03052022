@@ -7,6 +7,7 @@ import { AuthContext } from './helpers/AuthContext'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Post from './pages/Post'
+import Profile from './pages/Profile'
 
 const App = () => {
   const [authState, setAuthState] = useState({
@@ -49,6 +50,11 @@ const App = () => {
           <Route
             path="/post/:id"
             element={authState.status ? <Post /> : <Navigate to="/" />}
+          />
+
+          <Route
+            path="/profile/:id"
+            element={authState.status ? <Profile /> : <Navigate to="/" />}
           />
 
           <Route path="*" element={<NotFound />} />

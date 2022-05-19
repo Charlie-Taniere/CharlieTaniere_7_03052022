@@ -1,8 +1,9 @@
 .button-home {
     @include verticalCenter;
     width: auto;
-    height: auto;
-    margin-top: 50px;
+
+    height: 70vh;;
+    padding-top: 10%;
 
     &_sign {
         display: flex;
