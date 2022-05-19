@@ -15,13 +15,13 @@ const Banner = () => {
           src={groupomania}
           alt="Logo de Groupomania"
         />
-        <AuthProvider value={auth}>
-          <NavbarUser />
-        </AuthProvider>
+        {auth.authState.status && <NavbarUser />}
       </div>
-      <title className="banner_title">
-        <h1>Le réseau social pour les collaborateurs de Groupomania!</h1>
-      </title>
+      {!auth.authState.status && (
+        <title className="banner_title">
+          <h1>Le réseau social pour les collaborateurs de Groupomania!</h1>
+        </title>
+      )}
     </header>
   )
 }
