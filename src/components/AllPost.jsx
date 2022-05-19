@@ -15,7 +15,7 @@ function AllPost() {
 
   useEffect(() => {
     if (!localStorage.getItem('accessToken')) {
-      history.push('/login')
+      navigate('/')
     } else {
       axios
         .get('http://localhost:3001/posts', {

@@ -1,6 +1,5 @@
 import Banner from '../components/Banner'
 import ButtonHome from '../components/ButtonHome'
-import Sign from '../auth/Sign'
 import Footer from '../components/Footer'
 import background from '../assets/background.png'
 
