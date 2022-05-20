@@ -28,7 +28,7 @@ function Login() {
   }
 
   return (
-    <div className="loginContainer">
+    <form className="loginContainer">
       <input
         type="text"
         placeholder="Pseudo"
@@ -47,7 +47,7 @@ function Login() {
       <button className="loginContainer_submit" onClick={login}>
         Valider
       </button>
-    </div>
+    </form>
   )
 }
 

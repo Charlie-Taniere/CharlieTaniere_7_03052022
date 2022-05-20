@@ -1,11 +1,10 @@
 import React, { useContext } from 'react'
 import groupomania from '../assets/groupomania.jpg'
-import { AuthContext, AuthProvider } from '../helpers/AuthContext'
+import { AuthContext } from '../helpers/AuthContext'
 import NavbarUser from './NavbarUser'
 
 const Banner = () => {
   const auth = useContext(AuthContext)
-  console.log(auth)
 
   return (
     <header className="banner">
