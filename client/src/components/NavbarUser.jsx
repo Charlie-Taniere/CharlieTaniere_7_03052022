@@ -11,8 +11,12 @@ import CreatePost from '../components/CreatePost'
 import Popup from 'reactjs-popup'
 
 const NavbarUser = () => {
+  const auth = useContext(AuthContext)
+  const id = auth.authState.id
+
   const { setAuthState } = useContext(AuthContext)
   let navigate = useNavigate()
+  const location = useLocation()
 
   const logout = () => {
     localStorage.removeItem('accessToken')
@@ -28,21 +32,44 @@ const NavbarUser = () => {
         />
       </button>
 
-      <Popup
-        trigger={
-          <button className="nav-user_config">
-            <FontAwesomeIcon
-              icon={faPlus}
-              style={{ fontSize: 25, color: 'black' }}
-            />
-          </button>
-        }
-        position="center"
-      >
-        <CreatePost />
-      </Popup>
+      {location.pathname.includes('main') && (
+        <Popup
+          trigger={
+            <button className="nav-user_config">
+              <FontAwesomeIcon
+                icon={faPlus}
+                style={{ fontSize: 25, color: 'black' }}
+              />
+            </button>
+          }
+          position="center"
+        >
+          {(close) => <CreatePost closeProps={close} />}
+        </Popup>
+      )}
 
-      <button className="nav-user_config">
+      {location.pathname.includes('profile') && (
+        <button className="nav-user_config" onClick={() => navigate(-1)}>
+          <FontAwesomeIcon
+            icon={faArrowLeft}
+            style={{ fontSize: 25, color: 'black' }}
+          />
+        </button>
+      )}
+
+      {location.pathname.includes('post') && (
+        <button className="nav-user_config" onClick={() => navigate(-1)}>
+          <FontAwesomeIcon
+            icon={faArrowLeft}
+            style={{ fontSize: 25, color: 'black' }}
+          />
+        </button>
+      )}
+
+      <button
+        className="nav-user_config"
+        onClick={() => navigate(`/profile/${id}`)}
+      >
         <FontAwesomeIcon
           icon={faUser}
           style={{ fontSize: 25, color: 'black' }}

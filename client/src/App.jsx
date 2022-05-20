@@ -40,7 +40,12 @@ const App = () => {
     <AuthContext.Provider value={{ authState, setAuthState }}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              authState.status ? <Navigate replace to="/main/:id" /> : <Home />
+            }
+          />
 
           <Route
             path="/main/:id"

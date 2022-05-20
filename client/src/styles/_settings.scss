@@ -4,6 +4,11 @@ $font-1: "Rubik", sans-serif, arial;
 
 $color-1: #FD2D01;
 $color-2: #A91E00;
+$color-3: #FE4119; //5% lighter
+$color-4: #FE5633; //10% lighter
+$color-5: #FE6B4C; //15% lighter
+$color-6: #B11F01; //15% darker
+
 
 @mixin verticalCenter {
     display: flex;
@@ -19,4 +24,8 @@ $color-2: #A91E00;
 
 li {
     list-style: none;
+}
+
+a {
+    text-decoration: none;
 }

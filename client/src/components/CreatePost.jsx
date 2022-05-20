@@ -5,7 +5,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../helpers/AuthContext'
 
-function CreatePost() {
+function CreatePost(props) {
   const { authState } = useContext(AuthContext)
 
   let navigate = useNavigate()
@@ -15,6 +15,7 @@ function CreatePost() {
   }
 
   useEffect(() => {
+    console.log(props)
     if (!localStorage.getItem('accessToken')) {
       navigate('/login')
     }
@@ -63,8 +64,11 @@ function CreatePost() {
             placeholder="Qu'est-ce que tu raconte aujourd'hui?"
             autoComplete="false"
           />
-
-          <button type="submit" className="create-post-container_form_button">
+          <button
+            type="submit"
+            className="create-post-container_form_button"
+            onClick={() => props.closeProps()}
+          >
             {' '}
             Publier
           </button>
