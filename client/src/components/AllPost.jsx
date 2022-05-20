@@ -13,6 +13,17 @@ function AllPost() {
   const { authState } = useContext(AuthContext)
   let navigate = useNavigate()
 
+  const dateFormater = (createdAt) => {
+    let newDate = new Date(createdAt).toLocaleDateString('fr-FR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+    })
+    return newDate
+  }
+
   useEffect(() => {
     if (!localStorage.getItem('accessToken')) {
       navigate('/')
@@ -84,12 +95,22 @@ function AllPost() {
             </div>
             <div className="post-container_footer">
               <div className="post-container_footer_username">
-                <Link to={`/profile/${value.UserId}`}> {value.username} </Link>
+                <p className="post-container_footer_username_p">
+                  {' '}
+                  Posté le {dateFormater(value.createdAt)} par{' '}
+                </p>
+                <Link
+                  className="post-container_footer_username_a"
+                  to={`/profile/${value.UserId}`}
+                >
+                  {' '}
+                  {value.username}{' '}
+                </Link>
               </div>
               <div className="post-container_footer_buttons">
                 <FontAwesomeIcon
                   icon={faThumbsUp}
-                  style={{ fontSize: 30, color: '#FD2D01', marginRight: 30 }}
+                  style={{ fontSize: 25, color: 'white' }}
                   onClick={() => {
                     likeAPost(value.id)
                   }}

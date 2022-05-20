@@ -4,11 +4,13 @@ import {
   faPlus,
   faUser,
   faArrowRightFromBracket,
+  faArrowLeft,
 } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router'
 import { AuthContext } from '../helpers/AuthContext'
 import CreatePost from '../components/CreatePost'
 import Popup from 'reactjs-popup'
+import { useLocation } from 'react-router-dom'
 
 const NavbarUser = () => {
   const auth = useContext(AuthContext)
