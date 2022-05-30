@@ -22,7 +22,7 @@ app.use(cookieParser());
 //   next();
 // });
 
-app.use("/posts", postRouter);
+app.use("/auth", postRouter);
 app.use("/comments", commentsRouter);
 app.use("/auth", usersRouter);
 app.use("/likes", likesRouter);

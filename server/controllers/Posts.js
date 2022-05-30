@@ -9,7 +9,7 @@ exports.allPosts = async (req, res, next) => {
 
   const listOfPosts = await Posts.findAll({ include: [Likes] });
   const likedPosts = await Likes.findAll({ where: { UserId: req.user.id } });
-  return res.json({ listOfPosts: listOfPosts, likedPosts: likedPosts });
+  return res.json({ listOfPosts: listOfPosts});
 
 }
 

@@ -1,16 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const { validateToken } = require('../middlewares/Auth');
+const auth = require('../middlewares/Auth');
 
 
 const postCtrl = require('../controllers/Posts'); // 
 
-router.get('/', validateToken, postCtrl.allPosts);
-router.get('/byId/:id', validateToken, postCtrl.onePost);
-router.get("/byuserId/:id", validateToken, postCtrl.listOfPosts);
-router.post("/", validateToken, postCtrl.createPost);
-router.put("/title", validateToken, postCtrl.modifyPostTitle);
-router.put("/postText", validateToken, postCtrl.modifyPostBody);
-router.delete("/:postId", validateToken, postCtrl.deletePost);
+router.get('/posts', auth.token, postCtrl.allPosts);
+router.get('/byId/:id', auth.token, postCtrl.onePost);
+router.get("/byuserId/:id", auth.token,  postCtrl.listOfPosts);
+router.post("/", auth.token, postCtrl.createPost);
+router.put("/title", auth.token, postCtrl.modifyPostTitle);
+router.put("/postText", auth.token, postCtrl.modifyPostBody);
+router.delete("/:postId", auth.token, postCtrl.deletePost);
 
 module.exports = router;
