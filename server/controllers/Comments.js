@@ -1,23 +1,23 @@
 const { Comments } = require("../models");
 
-exports.getComment = (req, res, next) => {
+exports.getComment = async (req, res, next) => {
   const postId = req.params.postId;
-  const comments =  Comments.findAll({ where: { PostId: postId } });
+  const comments = await Comments.findAll({ where: { PostId: postId } });
   return res.json(comments);
 };
 
-exports.postComment = (req, res, next) => {
+exports.postComment = async (req, res, next) => {
   const comment = req.body;
   const username = req.user.username;
   comment.username = username;
-   Comments.create(comment);
+  await Comments.create(comment);
   return res.json(comment);
 };
 
-exports.deleteComment = (req, res, next) => {
+exports.deleteComment = async (req, res, next) => {
   const commentId = req.params.commentId;
 
-  Comments.destroy({
+  await Comments.destroy({
     where: {
       id: commentId,
     },

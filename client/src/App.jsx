@@ -34,20 +34,21 @@ const App = () => {
           })
         }
       })
+      .catch((error) => console.log('error1', error))
   }, [])
 
   return (
     <AuthContext.Provider value={{ authState, setAuthState }}>
       <BrowserRouter>
         <Routes>
-          {/* <Route
+          <Route
             path="/"
             element={
               authState.status ? <Navigate replace to="/main/:id" /> : <Home />
             }
-          /> */}
+          />
 
-          <Route path="/" element={<Home />} />
+          {/* <Route path="/" element={<Home />} /> */}
 
           <Route
             path="/main/:id"

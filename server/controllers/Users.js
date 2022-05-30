@@ -1,7 +1,7 @@
 
 const { Users } = require("../models");
 const bcrypt = require("bcrypt");
-const jwt = require('jsonwebtoken');
+const { sign }  = require('jsonwebtoken');
 
 
 exports.signup = async (req, res, next) => {
@@ -21,24 +21,32 @@ exports.signup = async (req, res, next) => {
 };
 
 
-exports.login = async (req, res, next) => {
+exports.login = async (req, res) => {
   const { username, password } = req.body;
+  console.log('body request: ',req.body)
 
   const user = await Users.findOne({ where: { username: username } });
+  console.log("ligne 28", user)
 
-  if (!user) res.json({ error: "L'utilisaeur n'existe pas!" });
-
+  if (!user) return res.json({ error: "L'utilisaeur n'existe pas!" });
+  if (user) {
+    console.log("ligne 32", user)
   bcrypt.compare(password, user.password).then(async (match) => {
-    if (!match) res.json({ error: "Mot de passe érroné" });
+    if (!match) return res.json({ error: "Mot de passe érroné" });
 
-    const accessToken = jwt.sign(
+    const accessToken = sign(
       { username: user.username, id: user.id },
       "SUPERSECRETTOKEN"
     );
-    // res.json({ token: accessToken, username: username, id: user.id });
-    
-    res.cookie('token', accessToken, { httpOnly: true, maxAge: 1209600000, signed: true })
+    return res.json({ token: accessToken, username: username, id: user.id });
+    //     res.json({username: username, id: user.id });
+    // res.cookie('token', accessToken, { httpOa&nly: true, maxAge: 1209600000})
   });
+} else {
+  return((error) => console.log('error46', error))
+}
+
+  
 };
 
 

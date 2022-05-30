@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const auth = require('../middlewares/Auth');
+const { validateToken } = require('../middlewares/Auth');
 
 const likeCtrl = require('../controllers/Likes'); 
 
-router.post("/", auth, likeCtrl.like);
+router.post("/", validateToken, likeCtrl.like);
 
 
 module.exports = router;
