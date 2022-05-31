@@ -1,26 +1,23 @@
-
-const express = require("express");
-const router = express.Router();
 const { Posts, Likes } = require("../models");
 
 
 
-exports.allPosts = async (req, res, next) => {
+exports.allPostsAndLikes = async (req, res) => {
 
   const listOfPosts = await Posts.findAll({ include: [Likes] });
   const likedPosts = await Likes.findAll({ where: { UserId: req.user.id } });
-  return res.json({ listOfPosts: listOfPosts});
+  res.json({ listOfPosts: listOfPosts, likedPosts: likedPosts });
 
 }
 
-exports.onePost = async (req, res, next) => {
+exports.onePost = async (req, res) => {
   const id = req.params.id;
   const post = await Posts.findByPk(id);
   return res.json(post);
 };
 
 
-exports.listOfPosts = async (req, res, next) => {
+exports.listOfPosts = async (req, res) => {
   const id = req.params.id;
   const listOfPosts = await Posts.findAll({
     where: { UserId: id },
@@ -29,7 +26,7 @@ exports.listOfPosts = async (req, res, next) => {
   return res.json(listOfPosts);
 };
 
-exports.createPost = async (req, res, next) => {
+exports.createPost = async (req, res) => {
     const post = req.body;
     post.username = req.user.username;
     post.UserId = req.user.id;
@@ -38,19 +35,19 @@ exports.createPost = async (req, res, next) => {
   };
 
 
-  exports.modifyPostTitle = async (req, res, next) => {
+  exports.modifyPostTitle = async (req, res) => {
   const { newTitle, id } = req.body;
   await Posts.update({ title: newTitle }, { where: { id: id } });
   return res.json(newTitle);
 };
 
-exports.modifyPostBody = async (req, res, next) => {
+exports.modifyPostBody = async (req, res) => {
   const { newText, id } = req.body;
   await Posts.update({ postText: newText }, { where: { id: id } });
   return res.json(newText);
 };
 
-exports.deletePost = async (req, res, next) => {
+exports.deletePost = async (req, res) => {
   const postId = req.params.postId;
   await Posts.destroy({
     where: {

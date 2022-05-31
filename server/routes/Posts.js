@@ -5,9 +5,9 @@ const auth = require('../middlewares/Auth');
 
 const postCtrl = require('../controllers/Posts'); // 
 
-router.get('/', auth.token, postCtrl.allPosts);
-router.get('/byId/:id', auth.token, postCtrl.onePost);
-router.get("/byuserId/:id", auth.token,  postCtrl.listOfPosts);
+router.get('/', auth.token, postCtrl.allPostsAndLikes);
+router.get('/byId/:id', postCtrl.onePost);
+router.get("/byuserId/:id", postCtrl.listOfPosts);
 router.post("/", auth.token, postCtrl.createPost);
 router.put("/title", auth.token, postCtrl.modifyPostTitle);
 router.put("/postText", auth.token, postCtrl.modifyPostBody);

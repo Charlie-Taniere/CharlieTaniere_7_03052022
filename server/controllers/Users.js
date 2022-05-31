@@ -39,8 +39,6 @@ exports.login = async (req, res) => {
       "SUPERSECRETTOKEN"
     );
     return res.json({ token: accessToken, username: username, id: user.id });
-    //     res.json({username: username, id: user.id });
-    // res.cookie('token', accessToken, { httpOa&nly: true, maxAge: 1209600000})
   });
 } else {
   return((error) => console.log('error46', error))
