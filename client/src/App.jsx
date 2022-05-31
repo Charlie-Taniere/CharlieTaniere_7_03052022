@@ -44,7 +44,7 @@ const App = () => {
           <Route
             path="/"
             element={
-              authState.status ? <Navigate replace to="/main/id" /> : <Home />
+              authState.status ? <Navigate replace to="/main/:id" /> : <Home />
             }
           />
 
