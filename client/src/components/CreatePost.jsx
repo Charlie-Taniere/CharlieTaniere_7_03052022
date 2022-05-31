@@ -57,13 +57,14 @@ function CreatePost(props) {
           />
 
           <ErrorMessage name="postText" component="span" />
-          <Field
+          <textarea
             className="create-post-container_form_body"
+            type="text"
             id="inputCreatePost"
             name="postText"
             placeholder="Qu'est-ce que tu raconte aujourd'hui?"
-            autoComplete="false"
-          />
+            autoComplete="off"
+          ></textarea>
           <button
             type="submit"
             className="create-post-container_form_button"

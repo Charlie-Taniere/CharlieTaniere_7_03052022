@@ -150,7 +150,7 @@ function OnePost() {
 
       <div className="one-post_comment">
         <div className="one-post_comment_add">
-          <input
+          <textarea
             className="one-post_comment_add_input"
             type="text"
             minLength="5"

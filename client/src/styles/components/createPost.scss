@@ -27,11 +27,13 @@
 
         &_body {
             width: 100%;
+            resize: vertical;
             align-items:flex-start;
             height: auto;
             min-height: 300px;
             flex-direction: column;
-            word-wrap: break-word;
+            word-break: break-all;
+  
 
   padding: 20px;
 
