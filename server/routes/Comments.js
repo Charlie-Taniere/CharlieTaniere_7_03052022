@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-// const { validateToken } = require('../middlewares/Auth');
+const auth = require('../middlewares/Auth');
 
 const commentsCtrl = require('../controllers/Comments'); 
 
-router.get("/:postId", commentsCtrl.getComment);
-router.post("/", commentsCtrl.postComment);
-router.delete("/:commentId", commentsCtrl.deleteComment);
+router.get("/:postId", auth.token, commentsCtrl.getComment);
+router.post("/", auth.token, commentsCtrl.postComment);
+router.delete("/:commentId", auth.token, commentsCtrl.deleteComment);
 
 module.exports = router;

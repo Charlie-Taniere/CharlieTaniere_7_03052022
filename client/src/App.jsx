@@ -18,7 +18,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/auth/basicInfo/', {
+      .get('http://localhost:3001/auth/auth', {
         headers: {
           accessToken: localStorage.getItem('accessToken'),
         },
@@ -41,14 +41,12 @@ const App = () => {
     <AuthContext.Provider value={{ authState, setAuthState }}>
       <BrowserRouter>
         <Routes>
-          {/* <Route
+          <Route
             path="/"
             element={
-              authState.status ? <Navigate replace to="/main" /> : <Home />
+              authState.status ? <Navigate replace to="/main/id" /> : <Home />
             }
-          /> */}
-
-          <Route path="/" element={<Home />} />
+          />
 
           <Route
             path="/main/:id"
