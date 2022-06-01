@@ -131,6 +131,13 @@ function OnePost() {
             }
           }}
         >
+          {postObject.image !== null && (
+            <img
+              className="post-container_body_img"
+              src={`http://localhost:3001/${postObject.image}`}
+              alt="img from a post"
+            />
+          )}
           {postObject.postText}
         </div>
         <div className="one-post_container_footer">

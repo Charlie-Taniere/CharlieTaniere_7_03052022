@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
@@ -7,12 +7,23 @@ import { AuthContext } from '../helpers/AuthContext'
 
 function CreatePost(props) {
   const { authState } = useContext(AuthContext)
+  // const [image, setImage] = useState({ preview: '', data: '' })          *A RAJOUTER PLUS TARD
+  // const [status, setStatus] = useState('')
+  const [image, setImage] = useState('')
+
+  const handleFileChange = (e) => {
+    const img = {
+      preview: URL.createObjectURL(e.target.files[0]),
+      data: e.target.files[0],
+    }
+    setImage(img)
+  }
 
   let navigate = useNavigate()
   const initialValues = {
     title: '',
     postText: '',
-    imageUrl: '',
+    image: '',
   }
 
   useEffect(() => {
@@ -29,10 +40,15 @@ function CreatePost(props) {
       .min(20, '20 caractères minmum')
       .max(350, '350 caractères maximum')
       .required('Tu dois écrire quelque chose!'),
+    image: Yup.string(),
   })
 
   const onSubmit = (data) => {
-    axios.post('http://localhost:3001/posts', data, {
+    let formData = new FormData()
+    formData.append('image', image)
+    formData.append('title', data.title)
+    formData.append('postText', data.postText)
+    axios.post('http://localhost:3001/posts', formData, {
       headers: { accessToken: localStorage.getItem('accessToken') },
     })
 
@@ -67,6 +83,25 @@ function CreatePost(props) {
             placeholder="Qu'est-ce que tu raconte aujourd'hui?"
             autoComplete="off"
           />
+
+          <input
+            id="file"
+            className="btn"
+            type="file"
+            name="image"
+            size="lg"
+            onChange={(e) => setImage(e.target.files[0])}
+          />
+
+          {/* {image.preview && (
+            <img src={image.preview} width="100" height="100" />                A RAJOUTER PLUS TARD 
+          )}
+          <input
+            id="file"
+            type="file"
+            name="image"
+            onChange={handleFileChange}
+          ></input> */}
 
           {/* <button
             type="submit"

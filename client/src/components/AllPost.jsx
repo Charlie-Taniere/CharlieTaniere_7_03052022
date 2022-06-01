@@ -91,6 +91,14 @@ function AllPost() {
                 navigate(`/post/${value.id}`)
               }}
             >
+              {value.image !== null && (
+                <img
+                  className="post-container_body_img"
+                  src={`http://localhost:3001/${value.image}`}
+                  alt="img from a post"
+                />
+              )}
+
               {value.postText}
             </div>
             <div className="post-container_footer">

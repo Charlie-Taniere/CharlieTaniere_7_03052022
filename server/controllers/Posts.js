@@ -30,15 +30,17 @@ exports.createPost = async (req, res) => {
     const post = req.body;
     post.username = req.user.username;
     post.UserId = req.user.id;
-    await Posts.create(post);
-    return res.json(post);
-  };
+    post.image = req.file?.path;
+    await Posts.create(post).then(()=>{
+      res.status(200).json(post);
+  }).catch(err => res.status(400).json(err.response));
+};
 
 // exports.createPost = (req, res, next) => {
-//   const postObject = req.body;
+//   const postObject = JSON.parse(req.body.post);
 //   const post = new Posts({
 //     ...postObject,
-//     // imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+//     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
 //   });
 //   post.save()
 //     .then(() => res.status(201).json({ message: 'Sauce enregistrée !'}))
