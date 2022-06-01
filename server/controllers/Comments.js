@@ -14,7 +14,7 @@ exports.postComment = async (req, res, next) => {
   return res.json(comment);
 };
 
-exports.deleteComment = async (req, res, next) => {
+exports.deleteComment = async (req, res) => {
   const commentId = req.params.commentId;
 
   await Comments.destroy({

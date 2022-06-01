@@ -12,10 +12,10 @@ function CreatePost(props) {
   const initialValues = {
     title: '',
     postText: '',
+    imageUrl: '',
   }
 
   useEffect(() => {
-    console.log(props)
     if (!localStorage.getItem('accessToken')) {
       navigate('/login')
     }
@@ -32,13 +32,13 @@ function CreatePost(props) {
   })
 
   const onSubmit = (data) => {
-    axios
-      .post('http://localhost:3001/posts', data, {
-        headers: { accessToken: localStorage.getItem('accessToken') },
-      })
-      .then((response) => {
-        navigate('/main/:id')
-      })
+    axios.post('http://localhost:3001/posts', data, {
+      headers: { accessToken: localStorage.getItem('accessToken') },
+    })
+
+    // .then(() => {
+    //   navigate('/main/:id')
+    // })
   }
 
   return (
@@ -57,19 +57,27 @@ function CreatePost(props) {
           />
 
           <ErrorMessage name="postText" component="span" />
-          <textarea
+
+          <Field
+            as="textarea"
             className="create-post-container_form_body"
-            type="text"
+            type="textarea"
             id="inputCreatePost"
             name="postText"
             placeholder="Qu'est-ce que tu raconte aujourd'hui?"
             autoComplete="off"
-          ></textarea>
-          <button
+          />
+
+          {/* <button
             type="submit"
             className="create-post-container_form_button"
             onClick={() => props.closeProps()}
           >
+            {' '}
+            Publier
+          </button> */}
+
+          <button type="submit" className="create-post-container_form_button">
             {' '}
             Publier
           </button>

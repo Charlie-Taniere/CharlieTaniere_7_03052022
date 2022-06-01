@@ -34,6 +34,17 @@ exports.createPost = async (req, res) => {
     return res.json(post);
   };
 
+// exports.createPost = (req, res, next) => {
+//   const postObject = req.body;
+//   const post = new Posts({
+//     ...postObject,
+//     // imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+//   });
+//   post.save()
+//     .then(() => res.status(201).json({ message: 'Sauce enregistrée !'}))
+//     .catch(error => res.status(400).json({ error }));
+// };
+
 
   exports.modifyPostTitle = async (req, res) => {
   const { newTitle, id } = req.body;
