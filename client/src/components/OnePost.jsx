@@ -45,7 +45,7 @@ function OnePost() {
             username: response.data.username,
           }
           setComments([...comments, commentToAdd])
-          setNewComment('')
+          setNewComment({ commentText: '', id: null })
         }
       })
   }
@@ -74,38 +74,6 @@ function OnePost() {
       })
   }
 
-  const editPost = (option) => {
-    if (option === 'title') {
-      let newTitle = prompt('Enter New Title:')
-      axios.put(
-        'http://localhost:3001/posts/title',
-        {
-          newTitle: newTitle,
-          id: id,
-        },
-        {
-          headers: { accessToken: localStorage.getItem('accessToken') },
-        }
-      )
-
-      setPostObject({ ...postObject, title: newTitle })
-    } else {
-      let newPostText = prompt('Enter New Text:')
-      axios.put(
-        'http://localhost:3001/posts/postText',
-        {
-          newText: newPostText,
-          id: id,
-        },
-        {
-          headers: { accessToken: localStorage.getItem('accessToken') },
-        }
-      )
-
-      setPostObject({ ...postObject, postText: newPostText })
-    }
-  }
-
   return (
     <div className="one-post">
       <div className="one-post_username">
@@ -113,33 +81,8 @@ function OnePost() {
         {postObject.username}
       </div>
       <div className="one-post_container" id="individual">
-        <div
-          className="one-post_container_title"
-          onClick={() => {
-            if (authState.username === postObject.username) {
-              editPost('title')
-            }
-          }}
-        >
-          {postObject.title}
-        </div>
-        <div
-          className="one-post_container_body"
-          onClick={() => {
-            if (authState.username === postObject.username) {
-              editPost('body')
-            }
-          }}
-        >
-          {postObject.image !== null && (
-            <img
-              className="post-container_body_img"
-              src={`http://localhost:3001/${postObject.image}`}
-              alt="img from a post"
-            />
-          )}
-          {postObject.postText}
-        </div>
+        <div className="one-post_container_title">{postObject.title}</div>
+        <div className="one-post_container_body">{postObject.postText}</div>
         <div className="one-post_container_footer">
           {authState.username === postObject.username && (
             <button

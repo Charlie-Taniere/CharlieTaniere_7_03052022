@@ -1,9 +1,6 @@
 const { Posts, Likes } = require("../models");
 
-
-
 exports.allPostsAndLikes = async (req, res) => {
-
   const listOfPosts = await Posts.findAll({ include: [Likes] });
   const likedPosts = await Likes.findAll({ where: { UserId: req.user.id } });
   res.json({ listOfPosts: listOfPosts, likedPosts: likedPosts });
@@ -36,29 +33,34 @@ exports.createPost = async (req, res) => {
   }).catch(err => res.status(400).json(err.response));
 };
 
-// exports.createPost = (req, res, next) => {
-//   const postObject = JSON.parse(req.body.post);
-//   const post = new Posts({
-//     ...postObject,
-//     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
-//   });
-//   post.save()
-//     .then(() => res.status(201).json({ message: 'Sauce enregistrée !'}))
-//     .catch(error => res.status(400).json({ error }));
+//   exports.modifyPostTitle = async (req, res) => {
+//   const { newTitle, id } = req.body;
+//   await Posts.update({ title: newTitle }, { where: { id: id } });        A SUPPRIMER 
+//   return res.json(newTitle);
 // };
 
+// exports.modifyPostBody = async (req, res) => {
+//   const { newText, id } = req.body;
+//   await Posts.update({ postText: newText }, { where: { id: id } });      A SUPPRIMER 
+//   return res.json(newText);
+// };
 
-  exports.modifyPostTitle = async (req, res) => {
-  const { newTitle, id } = req.body;
-  await Posts.update({ title: newTitle }, { where: { id: id } });
-  return res.json(newTitle);
-};
+  // exports.modifyPost = async (req, res) => {
+  // const postid = req.params.id;
+  // const post = req.body;
+  // post.username = req.user.username;
+  // post.UserId = req.user.id;
+  // post.image = req.file?.path;
 
-exports.modifyPostBody = async (req, res) => {
-  const { newText, id } = req.body;
-  await Posts.update({ postText: newText }, { where: { id: id } });
-  return res.json(newText);
-};
+  // await Posts.update(post,{                        A IMPLEMENTER
+  //   where: {
+  //     id: postid,
+  //   },
+  // }).then(()=>{
+  //     res.status(200).json("Article modifié!");
+  // }).catch(err => res.status(400).json(err.response));
+  // }
+
 
 exports.deletePost = async (req, res) => {
   const postId = req.params.postId;
