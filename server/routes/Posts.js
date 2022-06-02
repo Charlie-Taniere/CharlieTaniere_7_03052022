@@ -10,7 +10,7 @@ router.get('/', auth.token, postCtrl.allPostsAndLikes);
 router.get('/byId/:id', postCtrl.onePost);
 router.get("/byuserId/:id", postCtrl.listOfPosts);
 router.post("/", auth.token, multer, postCtrl.createPost);
-// router.put("/id", auth.token, multer, postCtrl.modifyPost);
+router.put("/byId/:id", auth.token, multer, postCtrl.modifyPost);
 router.delete("/:postId", auth.token, postCtrl.deletePost);
 
 module.exports = router;

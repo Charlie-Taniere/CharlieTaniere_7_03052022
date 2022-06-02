@@ -45,21 +45,21 @@ exports.createPost = async (req, res) => {
 //   return res.json(newText);
 // };
 
-  // exports.modifyPost = async (req, res) => {
-  // const postid = req.params.id;
-  // const post = req.body;
-  // post.username = req.user.username;
-  // post.UserId = req.user.id;
-  // post.image = req.file?.path;
+  exports.modifyPost = async (req, res) => {
+  const postid = req.params.id;
+  const post = req.body;
+  post.username = req.user.username;
+  post.UserId = req.user.id;
+  post.image = req.file?.path;
 
-  // await Posts.update(post,{                        A IMPLEMENTER
-  //   where: {
-  //     id: postid,
-  //   },
-  // }).then(()=>{
-  //     res.status(200).json("Article modifié!");
-  // }).catch(err => res.status(400).json(err.response));
-  // }
+  await Posts.update(post,{                  
+    where: {
+      id: postid,
+    },
+  }).then(()=>{
+      res.status(200).json("Article modifié!");
+  }).catch(err => res.status(400).json(err.response));
+  }
 
 
 exports.deletePost = async (req, res) => {

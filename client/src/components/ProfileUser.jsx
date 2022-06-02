@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { AuthContext } from '../helpers/AuthContext'
+import ChangePassword from '../components/ChangePassword'
 
 function Profile() {
   let { id } = useParams()
@@ -9,6 +10,7 @@ function Profile() {
   const [username, setUsername] = useState('')
   const [listOfPosts, setListOfPosts] = useState([])
   const { authState } = useContext(AuthContext)
+  const [displayPasswordIsOpen, setDisplayPassword] = useState(false)
 
   useEffect(() => {
     axios.get(`http://localhost:3001/auth/basicinfo/${id}`).then((response) => {
@@ -20,22 +22,37 @@ function Profile() {
     })
   }, [])
 
+  const deleteUser = () => {
+    axios
+      .delete(`http://localhost:3001/auth/deleteuser/${id}`, {
+        headers: { accessToken: localStorage.getItem('accessToken') },
+      })
+      .then(() => {
+        localStorage.removeItem('accessToken')
+        authState({ username: '', id: 0, status: false }, navigate('/'))
+      })
+  }
+
   return (
     <div className="profil-container">
       <div className="profil-container_info">
         {' '}
         <h1> {username} </h1>
         {authState.username === username && (
-          <button
-            onClick={() => {
-              navigate('/changepassword')
-            }}
-          >
-            {' '}
+          <button onClick={() => setDisplayPassword(!displayPasswordIsOpen)}>
             Change My Password
           </button>
         )}
+        <h4>Delete my account</h4>
+        {authState.username === username || authState.role === 1 ? (
+          <button className="smallBtn" onClick={deleteUser}>
+            Supprimer mon compte
+          </button>
+        ) : (
+          ''
+        )}
       </div>
+      {displayPasswordIsOpen && <ChangePassword />}
       <div className="profil-container_post-container">
         {listOfPosts.map((value, key) => {
           return (

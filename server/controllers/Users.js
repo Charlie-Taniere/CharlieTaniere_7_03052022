@@ -11,6 +11,7 @@ exports.signup = async (req, res, next) => {
     const user = new Users({
       username: username,
       email: email,
+      role: 0,
       password: hash,
     });
     user.save()
@@ -23,25 +24,22 @@ exports.signup = async (req, res, next) => {
 
 exports.login = async (req, res) => {
   const { username, password } = req.body;
-  console.log('body request: ',req.body)
 
   const user = await Users.findOne({ where: { username: username } });
-  console.log("ligne 28", user)
 
   if (!user) return res.json({ error: "L'utilisaeur n'existe pas!" });
   if (user) {
-    console.log("ligne 32", user)
   bcrypt.compare(password, user.password).then(async (match) => {
     if (!match) return res.json({ error: "Mot de passe érroné" });
 
     const accessToken = sign(
-      { username: user.username, id: user.id },
+      { username: user.username, id: user.id, role: user.role, },
       "SUPERSECRETTOKEN"
     );
-    return res.json({ token: accessToken, username: username, id: user.id });
+    return res.json({ token: accessToken, username: username, id: user.id, role: user.role, });
   });
 } else {
-  return((error) => console.log('error46', error))
+  return((error) => console.log('error login', error))
 }
 
   
@@ -82,3 +80,18 @@ exports.changePassword = async (req, res, next) => {
   });
 };
 
+exports.deleteUser = async (req, res, next) => {
+  const userId = req.params.id;
+  const userExist = await Users.findOne({ where: { id: userId } });
+
+  if (!userExist) {
+    res.json({ error: "User Doesn't Exist" });
+  } else {
+    await Users.destroy({
+      where: {
+        id: userId,
+      },
+    });
+    res.json(`USER NBR ${userId} DELETED SUCCESSFULLY`);
+  }
+};

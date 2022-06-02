@@ -21,6 +21,7 @@ function Login() {
           username: response.data.username,
           id: response.data.id,
           status: true,
+          role: response.data.role,
         })
         navigate(`/main/${response.data.id}`)
       }

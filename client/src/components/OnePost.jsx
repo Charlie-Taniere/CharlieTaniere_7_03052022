@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { AuthContext } from '../helpers/AuthContext'
+import ModifyPost from './ModifyPost'
 
 function OnePost() {
   let { id } = useParams()
@@ -10,6 +11,7 @@ function OnePost() {
   const [comments, setComments] = useState([])
   const [newComment, setNewComment] = useState('')
   const { authState } = useContext(AuthContext)
+  const [displayModifyPost, setModifyArticle] = useState(false)
 
   let navigate = useNavigate()
 
@@ -94,7 +96,8 @@ function OnePost() {
         )}
         <div className="one-post_container_body">{postObject.postText}</div>
         <div className="one-post_container_footer">
-          {authState.username === postObject.username && (
+          {authState.username === postObject.username ||
+          authState.role === 1 ? (
             <button
               className="one-post_container_footer_btn"
               onClick={() => {
@@ -104,9 +107,22 @@ function OnePost() {
               {' '}
               Supprimer la publication
             </button>
+          ) : (
+            ''
           )}
         </div>
+        {authState.username === postObject.username && (
+          <div className="one-post_comment_list_comment_btn">
+            <button
+              className="one-post_comment_list_comment_btn_btn"
+              onClick={() => setModifyArticle(!displayModifyPost)}
+            >
+              Modifier l'article
+            </button>
+          </div>
+        )}
       </div>
+      {displayModifyPost && <ModifyPost />}
 
       <div className="one-post_comment">
         <div className="one-post_comment_add">
@@ -143,7 +159,8 @@ function OnePost() {
                 <div className="one-post_comment_list_comment_body">
                   {comment.commentBody}
                 </div>
-                {authState.username === comment.username && (
+                {authState.username === comment.username ||
+                authState.role === 1 ? (
                   <div className="one-post_comment_list_comment_btn">
                     <button
                       className="one-post_comment_list_comment_btn_btn"
@@ -154,6 +171,8 @@ function OnePost() {
                       Supprimer
                     </button>
                   </div>
+                ) : (
+                  ''
                 )}
               </div>
             )
