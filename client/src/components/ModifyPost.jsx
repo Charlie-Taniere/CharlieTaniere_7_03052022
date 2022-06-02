@@ -65,7 +65,7 @@ function ModifyPost() {
   }
 
   return (
-    <div className="create-post-container">
+    <div className="modify-post-container">
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
@@ -75,14 +75,14 @@ function ModifyPost() {
         encType="multipart/form-data"
       >
         <Form
-          className="create-post-container_form"
+          className="modify-post-container_form"
           method="PUT"
           action="/postimg"
           encType="multipart/form-data"
         >
           <ErrorMessage name="title" component="span" />
           <Field
-            className="create-post-container_form_title"
+            className="modify-post-container_form_title"
             name="title"
             placeholder="Ton titre!"
           />
@@ -91,9 +91,9 @@ function ModifyPost() {
 
           <Field
             as="textarea"
-            className="create-post-container_form_body"
+            className="modify-post-container_form_body"
             type="textarea"
-            id="inputCreatePost"
+            id="inputmodifyPost"
             name="postText"
             placeholder="Qu'est-ce que tu raconte aujourd'hui?"
             autoComplete="off"
@@ -109,7 +109,7 @@ function ModifyPost() {
             onChange={handleFileChange}
           ></input>
 
-          <button type="submit" className="create-post-container_form_button">
+          <button type="submit" className="modify-post-container_form_button">
             {' '}
             Publier
           </button>

@@ -98,32 +98,34 @@ function OnePost() {
         <div className="one-post_container_footer">
           {authState.username === postObject.username ||
           authState.role === 1 ? (
-            <button
-              className="one-post_container_footer_btn"
-              onClick={() => {
-                deletePost(postObject.id)
-              }}
-            >
-              {' '}
-              Supprimer la publication
-            </button>
+            <div className="one-post_container_footer_btn">
+              <button
+                className="one-post_container_footer_btn_delete"
+                onClick={() => {
+                  deletePost(postObject.id)
+                }}
+              >
+                {' '}
+                Supprimer la publication
+              </button>
+            </div>
           ) : (
             ''
           )}
-        </div>
-        {authState.username === postObject.username && (
-          <div className="one-post_comment_list_comment_btn">
-            <button
-              className="one-post_comment_list_comment_btn_btn"
-              onClick={() => setModifyArticle(!displayModifyPost)}
-            >
-              Modifier l'article
-            </button>
-          </div>
-        )}
-      </div>
-      {displayModifyPost && <ModifyPost />}
 
+          {authState.username === postObject.username && (
+            <div className="one-post_container_footer_btn">
+              <button
+                className="one-post_container_footer_btn_modify"
+                onClick={() => setModifyArticle(!displayModifyPost)}
+              >
+                Modifier l'article
+              </button>
+            </div>
+          )}
+        </div>
+        {displayModifyPost && <ModifyPost />}
+      </div>
       <div className="one-post_comment">
         <div className="one-post_comment_add">
           <textarea

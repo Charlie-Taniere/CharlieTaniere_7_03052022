@@ -38,7 +38,7 @@ function CreatePost(props) {
       .required('Tu dois mettre un titre!'),
     postText: Yup.string()
       .min(20, '20 caractères minmum')
-      .max(450, '450 caractères maximum')
+      .max(500, '500 caractères maximum')
       .required('Tu dois écrire quelque chose!'),
     image: Yup.string(),
   })

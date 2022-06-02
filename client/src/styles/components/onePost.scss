@@ -22,8 +22,8 @@
         font-family: Arial, Helvetica, sans-serif;
         margin: auto;
         margin-bottom: 50px;
-        
-     
+
+
 
         &_title {
             display: flex;
@@ -53,31 +53,48 @@
             overflow-wrap: break-word;
             margin: auto;
             padding: 10px;
-            resize:  vertical;
+            resize: vertical;
             width: 90%;
             height: auto;
             min-height: 200px;
-            word-break: break-all;  
+            word-break: break-all;
         }
 
         &_footer {
             display: flex;
-            flex-direction: row-reverse;
             background-color: white;
+            margin: auto;
+
 
             &_btn {
-            color: $color-2;
-            background-color: white;
-            border: none;
-            padding: 5px;
-            cursor: pointer;
-            width: 170px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                width: 90%;
+               
+             
+                
 
-            &:hover {
-                font-weight: bold;
+                &_delete,
+                &_modify {
+                    display: flex;
+                    color: $color-2;
+                    background-color: white;
+                    border: none;
+                    padding: 5px;
+                    cursor: pointer;
+                    width: 170px;
+                    justify-content: center;
+                
+             
+                    
+                    
+
+                    &:hover {
+                        font-weight: bold;
+                    }
+                }
             }
-            }
-            
+
         }
     }
 
@@ -137,8 +154,8 @@
 
                 &_label {
                     display: flex;
-                   margin-bottom: 3px;
-                   margin-top: 25px;
+                    margin-bottom: 3px;
+                    margin-top: 25px;
                 }
 
                 &_body {
@@ -167,9 +184,9 @@
                         border: none;
                         cursor: pointer;
                         color: $color-2;
-                        
+
                         &:hover {
-                        
+
                             font-weight: bold;
                         }
                     }
