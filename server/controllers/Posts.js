@@ -33,17 +33,7 @@ exports.createPost = async (req, res) => {
   }).catch(err => res.status(400).json(err.response));
 };
 
-//   exports.modifyPostTitle = async (req, res) => {
-//   const { newTitle, id } = req.body;
-//   await Posts.update({ title: newTitle }, { where: { id: id } });        A SUPPRIMER 
-//   return res.json(newTitle);
-// };
 
-// exports.modifyPostBody = async (req, res) => {
-//   const { newText, id } = req.body;
-//   await Posts.update({ postText: newText }, { where: { id: id } });      A SUPPRIMER 
-//   return res.json(newText);
-// };
 
   exports.modifyPost = async (req, res) => {
   const postid = req.params.id;

@@ -8,9 +8,7 @@ import { AuthContext } from '../helpers/AuthContext'
 function ModifyPost() {
   let { id } = useParams()
   const { authState } = useContext(AuthContext)
-  // const [image, setImage] = useState({ preview: '', data: '' })          *A RAJOUTER PLUS TARD
-  // const [status, setStatus] = useState('')
-  const [image, setImage] = useState('')
+  const [image, setImage] = useState({ preview: '', data: '' })
 
   const handleFileChange = (e) => {
     const img = {
@@ -45,14 +43,14 @@ function ModifyPost() {
       .required('Tu dois mettre un titre!'),
     postText: Yup.string()
       .min(20, '20 caractères minmum')
-      .max(350, '350 caractères maximum')
+      .max(450, '450 caractères maximum')
       .required('Tu dois écrire quelque chose!'),
     image: Yup.string(),
   })
 
   const onSubmit = (data) => {
     let formData = new FormData()
-    formData.append('image', image)
+    formData.append('image', image.data)
     formData.append('title', data.title)
     formData.append('postText', data.postText)
     axios
@@ -101,37 +99,19 @@ function ModifyPost() {
             autoComplete="off"
           />
 
+          {image.preview && (
+            <img src={image.preview} width="100" height="100" />
+          )}
           <input
             id="file"
-            className="btn"
             type="file"
             name="image"
-            size="lg"
-            onChange={(e) => setImage(e.target.files[0])}
-          />
-
-          {/* {image.preview && (
-          <img src={image.preview} width="100" height="100" />                A RAJOUTER PLUS TARD 
-        )}
-        <input
-          id="file"
-          type="file"
-          name="image"
-          onChange={handleFileChange}
-        ></input> */}
-
-          {/* <button
-          type="submit"
-          className="create-post-container_form_button"
-          onClick={() => props.closeProps()}
-        >
-          {' '}
-          Publier
-        </button> */}
+            onChange={handleFileChange}
+          ></input>
 
           <button type="submit" className="create-post-container_form_button">
             {' '}
-            Modifier
+            Publier
           </button>
         </Form>
       </Formik>

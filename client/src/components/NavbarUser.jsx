@@ -34,7 +34,7 @@ const NavbarUser = () => {
         />
       </button>
 
-      {/* {location.pathname.includes('main') && (
+      {location.pathname.includes('main') && (
         <Popup
           trigger={
             <button className="nav-user_config">
@@ -48,10 +48,9 @@ const NavbarUser = () => {
         >
           {(close) => <CreatePost closeProps={close} />}
         </Popup>
-      )} */}
+      )}
 
-      
-
+      {/* 
       {location.pathname.includes('main') && (
         <Popup
           trigger={
@@ -66,11 +65,7 @@ const NavbarUser = () => {
         >
           <CreatePost />
         </Popup>
-      )}
-
-
-
-
+      )} */}
 
       {location.pathname.includes('profile') && (
         <button className="nav-user_config" onClick={() => navigate(-1)}>

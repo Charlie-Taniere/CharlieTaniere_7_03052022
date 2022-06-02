@@ -14,9 +14,9 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       role: {
-        type: DataTypes.STRING,
+        type: DataTypes.TINYINT,
         allowNull: false,
-        defaultValue: "user",
+        defaultValue: "0",
       },
     });
   

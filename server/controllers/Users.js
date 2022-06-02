@@ -26,20 +26,22 @@ exports.login = async (req, res) => {
   const { username, password } = req.body;
 
   const user = await Users.findOne({ where: { username: username } });
-
+try {
   if (!user) return res.json({ error: "L'utilisaeur n'existe pas!" });
+} catch (error) {console.log(error)} 
+
   if (user) {
   bcrypt.compare(password, user.password).then(async (match) => {
-    if (!match) return res.json({ error: "Mot de passe érroné" });
+    if (!match) return res.status(403).json({ error: "Mot de passe érroné" });
 
     const accessToken = sign(
       { username: user.username, id: user.id, role: user.role, },
       "SUPERSECRETTOKEN"
     );
-    return res.json({ token: accessToken, username: username, id: user.id, role: user.role, });
+    return res.status(200).json({ token: accessToken, username: username, id: user.id, role: user.role, });
   });
 } else {
-  return((error) => console.log('error login', error))
+  return res.status(500).json({ error: "Le serveur a rencontré une situation qu'il ne sait pas traiter." });
 }
 
   
