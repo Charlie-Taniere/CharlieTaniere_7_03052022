@@ -1,4 +1,5 @@
 const { Posts, Likes } = require("../models");
+const fs = require('fs');
 
 exports.allPostsAndLikes = async (req, res) => {
   const listOfPosts = await Posts.findAll({ include: [Likes] });
