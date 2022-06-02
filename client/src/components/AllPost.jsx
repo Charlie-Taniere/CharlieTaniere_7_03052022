@@ -92,14 +92,15 @@ function AllPost() {
               }}
             >
               {value.image !== null && (
-                <img
-                  className="post-container_body_img"
-                  src={`http://localhost:3001/${value.image}`}
-                  alt="img from a post"
-                />
+                <div className="post-container_body_img">
+                  <img
+                    className="post-container_body_img_img"
+                    src={`http://localhost:3001/${value.image}`}
+                    alt="img from a post"
+                  />
+                </div>
               )}
-
-              {value.postText}
+              <div className="post-container_body_body">{value.postText}</div>
             </div>
             <div className="post-container_footer">
               <div className="post-container_footer_username">

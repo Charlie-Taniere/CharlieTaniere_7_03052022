@@ -82,6 +82,16 @@ function OnePost() {
       </div>
       <div className="one-post_container" id="individual">
         <div className="one-post_container_title">{postObject.title}</div>
+        {postObject.image !== null && (
+          <div className="one-post_container_img">
+            {' '}
+            <img
+              className="one-post_container_img_img"
+              src={`http://localhost:3001/${postObject.image}`}
+              alt="img from a post"
+            />
+          </div>
+        )}
         <div className="one-post_container_body">{postObject.postText}</div>
         <div className="one-post_container_footer">
           {authState.username === postObject.username && (
