@@ -1,6 +1,7 @@
 const { Posts, Likes } = require("../models");
 const fs = require('fs');
 
+
 exports.allPostsAndLikes = async (req, res) => {
   const listOfPosts = await Posts.findAll({ include: [Likes] });
   const likedPosts = await Likes.findAll({ where: { UserId: req.user.id } });
@@ -55,12 +56,15 @@ exports.createPost = async (req, res) => {
 
 exports.deletePost = async (req, res) => {
   const postId = req.params.postId;
-  await Posts.destroy({
+  console.log(postId)
+//  await Posts.image.split('/images/')[1];
+//   fs.unlink(`images/${filename}`, () => {
+   Posts.destroy({
     where: {
       id: postId,
     },
-  });
-
+  // });
+})
   return res.json("DELETED SUCCESSFULLY");
 };
 

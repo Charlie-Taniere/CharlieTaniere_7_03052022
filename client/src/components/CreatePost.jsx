@@ -82,7 +82,7 @@ function CreatePost(props) {
             type="textarea"
             id="inputCreatePost"
             name="postText"
-            placeholder="Qu'est-ce que tu raconte aujourd'hui?"
+            placeholder="Qu'est-ce que tu racontes aujourd'hui?"
             autoComplete="off"
           />
 

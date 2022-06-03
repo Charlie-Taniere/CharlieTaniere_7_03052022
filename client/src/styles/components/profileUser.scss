@@ -1,0 +1,143 @@
+.profil-container {
+    display: flex;
+    height: auto;
+    width: 100%;
+    flex-direction: column;
+
+    &_h1 {
+        align-self: center;
+        font-family: $font-1;
+        font-size: 25px;
+    }
+
+    &_h2 {
+        align-self: center;
+        margin-top: 50px;
+        font-family: $font-1;
+        font-size: 20px;
+    }
+
+
+
+    &_info {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        margin: auto;
+        justify-content: center;
+
+
+
+        &_change-password, &_delete-account {
+            background-color: white;
+            border: none;
+            color: $color-2;
+            padding: 10px;
+            width: 170px;
+
+            &:hover {
+                cursor: pointer;
+                scale: 1.1;
+                font-weight: bold;
+            }
+        }
+    }
+
+    &_post {
+        width: 40%;
+        height: auto;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        margin-top: 50px;
+        border: 1px solid $color-2;
+        font-family: Arial, Helvetica, sans-serif;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        margin: auto;
+        margin-top: 50px;
+        margin-bottom: 50px;
+
+        &:hover {
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            cursor: pointer;
+          }
+        
+
+        &_title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 30px;
+            color: $color-3;
+            margin-bottom: 20px;
+            resize: vertical;
+            word-break: break-all;
+        }
+
+
+        &_body {
+            flex: 60%;
+            flex-direction: column;
+            justify-content: space-between;
+            display: flex;
+            padding: 10px;
+            resize: vertical;
+            word-break: break-all;
+
+            &_img {
+                display: flex;
+                width: 100%;
+                height: 400px;
+
+                &_img {
+                    margin: auto;
+                    width: 90%;
+                    object-fit: contain;
+                    max-height: 400px;
+                }
+            }
+        }
+        &_footer {
+            display: flex;
+            height: 45px;
+            border-top: 1px solid lightgray;
+            align-items: center;
+            padding-left: 15px;
+            background-color: $color-4;
+            color: white;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+    
+            // &_username {
+            //   display: flex;
+            //     flex: 100%;
+            //     &_a{
+            //       color: white;
+            //       font-weight: bold;
+            //       a:active {
+            //         color: white;
+            //       }
+            //   }
+               
+            //   &_p{
+            //     margin-right: 6px;
+            //   }
+            //   }
+              &_buttons {
+                flex: 50%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+    
+                &_label {
+                  margin-right: 20px;
+                  margin-left: 10px;
+                }
+                
+              }         
+          }
+    }
+
+}
+

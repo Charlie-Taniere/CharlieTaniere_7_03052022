@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
 
 function ChangePassword() {
   const [oldPassword, setOldPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
-  let { id } = useParams()
 
   const changePassword = () => {
     axios
@@ -32,27 +30,28 @@ function ChangePassword() {
   }
 
   return (
-    <div className="changePW">
-      <h1>Edit password</h1>
+    <div className="password-container">
       <div>
         <input
-          className="password"
+          className="password-container_input"
           type="text"
-          placeholder="Actual"
+          placeholder="Mot de passe actuel"
           onChange={(event) => {
             setOldPassword(event.target.value)
           }}
         />
         <input
-          className="password"
+          className="password-container_input"
           type="text"
-          placeholder="new password"
+          placeholder="Nouveau mot de passe"
           onChange={(event) => {
             setNewPassword(event.target.value)
           }}
         />
       </div>
-      <button onClick={changePassword}>🔑 Save Changes</button>
+      <button className="password-container_button" onClick={changePassword}>
+        Valider
+      </button>
     </div>
   )
 }

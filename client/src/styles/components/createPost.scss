@@ -5,7 +5,7 @@
     align-items: center;
     border-radius: 10px;
     flex-direction: column;
-    border: solid 2px $color-1;
+    border: solid 2px $color-2;
     background-color: white;
 
     &_form {
@@ -27,16 +27,13 @@
 
         &_body {
             width: 100%;
-            resize: vertical;
-            align-items:flex-start;
+            resize: none;
+            align-items: flex-start;
             height: auto;
             min-height: 300px;
             flex-direction: column;
             word-break: break-all;
-  
-
-  padding: 20px;
-
+            padding: 20px;
         }
 
         &_button {
@@ -46,16 +43,13 @@
             margin-top: 20px;
         }
     }
-
-
-
 }
 
 .popup-content {
     flex-direction: column;
-    width: 40% !important;
+    width: 45% !important;
     height: auto;
-    left: 30% !important;
+    left: 27.5% !important;
     top: 25% !important;
 
 }
@@ -64,16 +58,12 @@
     color: rgb(255, 255, 255);
 }
 
-// [role='tooltip'].popup-content {}
 
 .popup-overlay {
     display: flex;
     width: 100%;
 
-
 }
-
 [data-popup='tooltip'].popup-overlay {
     background: rgba(255, 255, 255, 0.7);
-
 }

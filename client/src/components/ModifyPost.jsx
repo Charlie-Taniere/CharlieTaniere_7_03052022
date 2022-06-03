@@ -19,9 +19,7 @@ function ModifyPost() {
   }
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
-      console.log(response.data)
-    })
+    axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {})
   }, [id])
 
   let navigate = useNavigate()

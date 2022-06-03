@@ -35,17 +35,22 @@ function Profile() {
 
   return (
     <div className="profil-container">
+      <h1 className="profil-container_h1"> Profil de {username} </h1>
       <div className="profil-container_info">
         {' '}
-        <h1> {username} </h1>
         {authState.username === username && (
-          <button onClick={() => setDisplayPassword(!displayPasswordIsOpen)}>
-            Change My Password
+          <button
+            className="profil-container_info_change-password"
+            onClick={() => setDisplayPassword(!displayPasswordIsOpen)}
+          >
+            Modifier mot de passe
           </button>
         )}
-        <h4>Delete my account</h4>
         {authState.username === username || authState.role === 1 ? (
-          <button className="smallBtn" onClick={deleteUser}>
+          <button
+            className="profil-container_info_delete-account"
+            onClick={deleteUser}
+          >
             Supprimer mon compte
           </button>
         ) : (
@@ -53,28 +58,31 @@ function Profile() {
         )}
       </div>
       {displayPasswordIsOpen && <ChangePassword />}
-      <div className="profil-container_post-container">
+      <h2 className="profil-container_h2">Toutes ses publications</h2>
+      <div>
         {listOfPosts.map((value, key) => {
           return (
-            <div key={key} className="profil-container_post-container_post">
-              <div className="profil-container_post-container_post_title">
-                {' '}
-                {value.title}{' '}
-              </div>
+            <div key={key} className="profil-container_post">
+              <div className="profil-container_post_title"> {value.title} </div>
+
               <div
-                className="profil-container_post-container_post_body"
+                className="profil-container_post_body"
                 onClick={() => {
                   navigate(`/post/${value.id}`)
                 }}
               >
                 {value.postText}
               </div>
-              <div className="profil-container_post-container_post_footer">
-                <div className="profil-container_post-container_post_footer_username">
-                  {value.username}
-                </div>
-                <div className="profil-container_post-container_post_footer_buttons">
-                  <label> {value.Likes.length}</label>
+              <div className="profil-container_post_footer">
+                {/* <div className="profil-container_post_footer_username">
+                  <p>Par </p>
+                  <p> {value.username}</p>
+                </div> */}
+                <div className="profil-container_post_footer_buttons">
+                  <label className="profil-container_post_footer_buttons_label">
+                    {' '}
+                    {value.Likes.length} likes
+                  </label>
                 </div>
               </div>
             </div>
