@@ -6,26 +6,11 @@ import { faAt, faGlobe, faPhoneFlip } from '@fortawesome/free-solid-svg-icons'
 const Footer = () => {
   return (
     <footer className="footer">
-      <FontAwesomeIcon
-        icon={faTwitter}
-        style={{ fontSize: 30, color: 'white', marginRight: 30 }}
-      />
-      <FontAwesomeIcon
-        icon={faFacebook}
-        style={{ fontSize: 30, color: 'white', marginRight: 30 }}
-      />
-      <FontAwesomeIcon
-        icon={faAt}
-        style={{ fontSize: 30, color: 'white', marginRight: 30 }}
-      />
-      <FontAwesomeIcon
-        icon={faGlobe}
-        style={{ fontSize: 30, color: 'white', marginRight: 30 }}
-      />
-      <FontAwesomeIcon
-        icon={faPhoneFlip}
-        style={{ fontSize: 30, color: 'white', marginRight: 30 }}
-      />
+      <FontAwesomeIcon className="footer_icon" icon={faTwitter} />
+      <FontAwesomeIcon className="footer_icon" icon={faFacebook} />
+      <FontAwesomeIcon className="footer_icon" icon={faAt} />
+      <FontAwesomeIcon className="footer_icon" icon={faGlobe} />
+      <FontAwesomeIcon className="footer_icon" icon={faPhoneFlip} />
     </footer>
   )
 }

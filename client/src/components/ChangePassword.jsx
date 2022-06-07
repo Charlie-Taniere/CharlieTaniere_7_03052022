@@ -31,24 +31,22 @@ function ChangePassword() {
 
   return (
     <div className="password-container">
-      <div>
-        <input
-          className="password-container_input"
-          type="text"
-          placeholder="Mot de passe actuel"
-          onChange={(event) => {
-            setOldPassword(event.target.value)
-          }}
-        />
-        <input
-          className="password-container_input"
-          type="text"
-          placeholder="Nouveau mot de passe"
-          onChange={(event) => {
-            setNewPassword(event.target.value)
-          }}
-        />
-      </div>
+      <input
+        className="password-container_input"
+        type="text"
+        placeholder="Mot de passe actuel"
+        onChange={(event) => {
+          setOldPassword(event.target.value)
+        }}
+      />
+      <input
+        className="password-container_input"
+        type="text"
+        placeholder="Nouveau mot de passe"
+        onChange={(event) => {
+          setNewPassword(event.target.value)
+        }}
+      />
       <button className="password-container_button" onClick={changePassword}>
         Valider
       </button>

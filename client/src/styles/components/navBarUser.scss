@@ -4,6 +4,9 @@
     width: 90%;
     justify-content: center;
     align-items: center;
+    @media screen and (max-width: 480px) {
+     width: 100%;
+    }
   
 
 &_logout-btn{
@@ -36,10 +39,17 @@
     height: 50px;
     font-family: $font-1;
     border-radius: 100px;
-    border-color: $color-1;
-    border: solid, 1px;
+    border-color: $color-1;;
     margin-right: 15px;
     background-color: white;
+    font-size: 2vw;
+
+    @media screen and (max-width: 480px) {
+    width: 40px;
+    height: 40px;
+    font-size: 4vw;
+        }
+        
 
     &:hover {
         cursor: pointer;

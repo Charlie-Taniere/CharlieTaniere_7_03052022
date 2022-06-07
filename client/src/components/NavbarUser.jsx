@@ -28,20 +28,14 @@ const NavbarUser = () => {
   return (
     <nav className="nav-user">
       <button className="nav-user_config" onClick={logout}>
-        <FontAwesomeIcon
-          icon={faArrowRightFromBracket}
-          style={{ fontSize: 25, color: 'black' }}
-        />
+        <FontAwesomeIcon icon={faArrowRightFromBracket} />
       </button>
 
       {location.pathname.includes('main') && (
         <Popup
           trigger={
             <button className="nav-user_config">
-              <FontAwesomeIcon
-                icon={faPlus}
-                style={{ fontSize: 25, color: 'black' }}
-              />
+              <FontAwesomeIcon icon={faPlus} />
             </button>
           }
           position="center"
@@ -50,38 +44,15 @@ const NavbarUser = () => {
         </Popup>
       )}
 
-      {/* 
-      {location.pathname.includes('main') && (
-        <Popup
-          trigger={
-            <button className="nav-user_config">
-              <FontAwesomeIcon
-                icon={faPlus}
-                style={{ fontSize: 25, color: 'black' }}
-              />
-            </button>
-          }
-          position="center"
-        >
-          <CreatePost />
-        </Popup>
-      )} */}
-
       {location.pathname.includes('profile') && (
         <button className="nav-user_config" onClick={() => navigate(-1)}>
-          <FontAwesomeIcon
-            icon={faArrowLeft}
-            style={{ fontSize: 25, color: 'black' }}
-          />
+          <FontAwesomeIcon icon={faArrowLeft} />
         </button>
       )}
 
       {location.pathname.includes('post') && (
         <button className="nav-user_config" onClick={() => navigate(-1)}>
-          <FontAwesomeIcon
-            icon={faArrowLeft}
-            style={{ fontSize: 25, color: 'black' }}
-          />
+          <FontAwesomeIcon icon={faArrowLeft} />
         </button>
       )}
 
@@ -89,10 +60,7 @@ const NavbarUser = () => {
         className="nav-user_config"
         onClick={() => navigate(`/profile/${id}`)}
       >
-        <FontAwesomeIcon
-          icon={faUser}
-          style={{ fontSize: 25, color: 'black' }}
-        />
+        <FontAwesomeIcon icon={faUser} />
       </button>
     </nav>
   )

@@ -7,7 +7,13 @@
         width: 40%;
         margin: auto;
         margin-bottom: 3px;
-        color: $color-2
+        color: $color-2;
+
+        @media screen and (max-width: 480px) {
+            width: 97%;
+          }
+
+    
     }
 
     &_container {
@@ -22,6 +28,10 @@
         font-family: Arial, Helvetica, sans-serif;
         margin: auto;
         margin-bottom: 50px;
+
+        @media screen and (max-width: 480px) {
+            width: 97%;
+          }
 
 
 
@@ -107,9 +117,15 @@
         margin: auto;
         margin-top: 40px;
 
+        @media screen and (max-width: 480px) {
+            width: 97%;
+          }
+
+
         &_add {
             display: flex;
             flex-direction: column;
+            height: auto;
 
             &_input {
                 display: flex;
@@ -121,12 +137,21 @@
                 padding: 10px;
                 border: 1px solid $color-2;
                 border-radius: 12px;
+
+                @media screen and (max-width: 480px) {
+                    width: 97%;
+                  }
+        
             }
 
             &_btn {
                 margin-top: 3px;
                 display: flex;
                 justify-content: flex-end;
+                @media screen and (max-width: 480px) {
+                    margin-left: 10px;
+                    justify-content: center;
+                  }
 
                 &_btn {
                     display: flex;
@@ -140,10 +165,7 @@
                     background-color: $color-5;
                     color: white;
                 }
-
             }
-
-
         }
 
         &_list {

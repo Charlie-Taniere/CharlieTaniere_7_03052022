@@ -8,7 +8,7 @@ const Main = () => {
   return (
     <div className="main">
       <Banner />
-      <Navbar />
+      {/* <Navbar /> */}
       <AllPost />
       <Footer />
     </div>

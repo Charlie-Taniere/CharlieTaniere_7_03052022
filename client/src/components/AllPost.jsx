@@ -119,7 +119,6 @@ function AllPost() {
               <div className="post-container_footer_buttons">
                 <FontAwesomeIcon
                   icon={faThumbsUp}
-                  style={{ fontSize: 25, color: 'white' }}
                   onClick={() => {
                     likeAPost(value.id)
                   }}
@@ -136,7 +135,6 @@ function AllPost() {
               <div className="post-container_footer_buttons">
                 <FontAwesomeIcon
                   icon={faMessage}
-                  style={{ fontSize: 25, color: 'white' }}
                   className={
                     likedPosts.includes(value.id) ? 'unlikeBttn' : 'likeBttn'
                   }
