@@ -23,14 +23,20 @@ function Profile() {
   }, [])
 
   const deleteUser = () => {
-    axios
-      .delete(`http://localhost:3001/auth/deleteuser/${id}`, {
-        headers: { accessToken: localStorage.getItem('accessToken') },
-      })
-      .then(() => {
-        localStorage.removeItem('accessToken')
-        authState({ username: '', id: 0, status: false }, navigate('/'))
-      })
+    let res = confirm('Voulez-vous vraiment supprimer votre compte?')
+    if (res) {
+      axios
+        .delete(`http://localhost:3001/auth/deleteuser/${id}`, {
+          headers: { accessToken: localStorage.getItem('accessToken') },
+        })
+        .then(() => {
+          localStorage.removeItem('accessToken')
+          authState(
+            { username: '', id: 0, status: false },
+            window.location.reload()
+          )
+        })
+    }
   }
 
   return (
