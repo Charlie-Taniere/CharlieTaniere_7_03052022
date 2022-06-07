@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import axios from 'axios'
-import { useNavigate, useParams } from 'react-router'
+import { useNavigate } from 'react-router'
 import { AuthContext } from '../helpers/AuthContext'
 
 function Login() {
@@ -8,13 +8,15 @@ function Login() {
   const [password, setPassword] = useState('')
   const { setAuthState } = useContext(AuthContext)
 
-  let navigate = useNavigate()
+  const [error, setError] = useState('')
+  console.log(error)
 
+  let navigate = useNavigate()
   const login = () => {
     const data = { username: username, password: password }
     axios.post('http://localhost:3001/auth/login', data).then((response) => {
       if (response.data.error) {
-        alert(response.data.error)
+        setError("L'utilisateur n'existe pas!")
       } else {
         localStorage.setItem('accessToken', response.data.token)
         setAuthState({
@@ -37,6 +39,7 @@ function Login() {
           setUsername(event.target.value)
         }}
       />
+      {error ? <p>{error}</p> : null}
       <input
         type="password"
         placeholder="Mot de passe"

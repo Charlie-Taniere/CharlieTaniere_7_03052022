@@ -3,7 +3,6 @@
     height: auto;
     min-height: 75vh;
     width: 100%;
-
     flex-direction: column;
 
     &_h1 {
@@ -20,16 +19,15 @@
         font-size: 20px;
     }
 
-
-
     &_info {
         display: flex;
         width: 100%;
         align-items: center;
-        margin-left:  auto;
+        margin-left: auto;
         justify-content: center;
 
-        &_change-password, &_delete-account {
+        &_change-password,
+        &_delete-account {
             background-color: white;
             border: none;
             color: $color-2;
@@ -63,20 +61,18 @@
             width: 97%;
         }
 
-        @media screen and (min-width: 481px) and ( max-width: 768px){
-          width: 80%;
+        @media screen and (min-width: 481px) and (max-width: 768px) {
+            width: 80%;
         }
 
-        @media screen and (min-width: 769px) and ( max-width: 1024px){
-            width: 60%;   
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+            width: 60%;
         }
-
 
         &:hover {
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
             cursor: pointer;
-          }
-        
+        }
 
         &_title {
             display: flex;
@@ -88,7 +84,6 @@
             resize: vertical;
             word-break: break-all;
         }
-
 
         &_body {
             flex: 60%;
@@ -112,6 +107,7 @@
                 }
             }
         }
+
         &_footer {
             display: flex;
             height: 45px;
@@ -122,36 +118,18 @@
             color: white;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
-    
-            // &_username {
-            //   display: flex;
-            //     flex: 100%;
-            //     &_a{
-            //       color: white;
-            //       font-weight: bold;
-            //       a:active {
-            //         color: white;
-            //       }
-            //   }
-               
-            //   &_p{
-            //     margin-right: 6px;
-            //   }
-            //   }
-              &_buttons {
+
+            &_buttons {
                 flex: 50%;
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
-    
+
                 &_label {
-                  margin-right: 20px;
-                  margin-left: 10px;
+                    margin-right: 20px;
+                    margin-left: 10px;
                 }
-                
-              }         
-          }
+            }
+        }
     }
-
 }
-

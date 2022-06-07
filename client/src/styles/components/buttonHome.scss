@@ -1,14 +1,14 @@
 .button-home {
     @include verticalCenter;
     width: auto;
-    height: 69vh;
+    height: 71vh;
     padding-top: 10%;
 
     @media screen and (max-width: 480px) {
         height: 72vh;
         flex-direction: column;
         padding-top: 0px;
-      }
+    }
 
     &_sign {
         display: flex;
@@ -30,11 +30,12 @@
             border-bottom-left-radius: 0px;
             border-right: solid $color-1 2px;
             border-top-left-radius: 20px;
-          }
-          
-          @media screen and (min-width: 481px) and ( max-width: 768px){
+        }
+
+        @media screen and (min-width: 481px) and (max-width: 768px) {
             width: 30%;
         }
+
         &:hover {
             background-color: #F55353;
             cursor: pointer;
@@ -48,8 +49,6 @@
             height: 100%;
             font-size: 18px;
             min-height: 70px;
-
-          
         }
     }
 
@@ -73,9 +72,9 @@
             border-top-right-radius: 0px;
             border-bottom-right-radius: 20px;
             border-left: solid $color-1 2px;
-          }
+        }
 
-          @media screen and (min-width: 481px) and ( max-width: 768px){
+        @media screen and (min-width: 481px) and (max-width: 768px) {
             width: 30%;
         }
 
@@ -92,8 +91,6 @@
             height: 100%;
             font-size: 18px;
             min-height: 70px;
-
         }
     }
-
 }
