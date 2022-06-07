@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
 import { AuthContext } from '../helpers/AuthContext'
 import ModifyPost from './ModifyPost'
@@ -81,9 +81,16 @@ function OnePost() {
   return (
     <div className="one-post">
       <div className="one-post_username">
-        <span className="one-post_username_color">Par : </span>
-        {postObject.username}
+        <Link
+          className="one-post_username_color_username"
+          to={`/profile/${postObject.UserId}`}
+        >
+          {' '}
+          <span className="one-post_username_color">Par : </span>{' '}
+          {postObject.username}{' '}
+        </Link>
       </div>
+
       <div className="one-post_container" id="individual">
         <div className="one-post_container_title">{postObject.title}</div>
         {postObject.image !== null && (
@@ -160,6 +167,7 @@ function OnePost() {
                     Par {comment.username}
                   </label>
                 </div>
+
                 <div className="one-post_comment_list_comment_body">
                   {comment.commentBody}
                 </div>

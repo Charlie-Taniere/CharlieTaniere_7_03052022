@@ -31,7 +31,10 @@
             border-right: solid $color-1 2px;
             border-top-left-radius: 20px;
           }
-
+          
+          @media screen and (min-width: 481px) and ( max-width: 768px){
+            width: 30%;
+        }
         &:hover {
             background-color: #F55353;
             cursor: pointer;
@@ -71,6 +74,10 @@
             border-bottom-right-radius: 20px;
             border-left: solid $color-1 2px;
           }
+
+          @media screen and (min-width: 481px) and ( max-width: 768px){
+            width: 30%;
+        }
 
         &:hover {
             background-color: #F55353;

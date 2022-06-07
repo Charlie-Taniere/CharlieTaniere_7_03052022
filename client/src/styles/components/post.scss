@@ -18,8 +18,16 @@
     @media screen and (max-width: 480px) {
       width: 97%;
     }
-    
 
+    @media screen and (min-width: 481px) and ( max-width: 768px){
+   width: 80%;
+  }
+    
+  @media screen and (min-width: 769px) and ( max-width: 1024px){
+ 
+    width: 60%;
+  
+}
     &_title {
         display: flex;
         align-items: center;

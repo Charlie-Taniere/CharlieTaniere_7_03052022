@@ -4,23 +4,26 @@
     flex-direction: column;
     height: 15vh;;
     width: 100%;
+    height: auto;
 
     &_container {
         display: flex;
         width: 100%;
 
-        @media screen and (max-width: 480px) {
+        @media screen and (max-width: 768px) {
         flex-wrap: wrap;
         }
+
+   
         
     &_img {
         display: block;
-        margin-left: 25%;
-        width: 50%;
+        margin-left: 30%;
+        width: 40%;
 
-        @media screen and (max-width: 480px) {
-            width: 100%;
-            margin-left: 0%;
+        @media screen and (max-width: 768px) {
+            width: 75%;
+            margin:auto;
         }
             
 
@@ -44,10 +47,20 @@
             font-size: 30px;
 
             @media screen and (max-width: 480px) {
-                font-size: 20px;
+                font-size: 18px;
                 text-align: center;
-                margin-top: 30px;
+                margin-top: 20px;
               }
+              @media screen and (min-width: 481px) and ( max-width: 768px){
+                text-align: center;
+                width: 70%;
+                font-size: 22px;
+            }
+            @media screen and (min-width: 769px) and ( max-width: 1024px){
+                text-align: center;
+                width: 90%;
+                font-size: 25px;
+            }
         }
     }
 

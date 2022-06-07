@@ -12,7 +12,13 @@
         @media screen and (max-width: 480px) {
             width: 97%;
           }
+          @media screen and (min-width: 481px) and ( max-width: 768px){
+            width: 80%;
+        }
 
+        @media screen and (min-width: 769px) and ( max-width: 1024px){
+            width: 60%;   
+        }
     
     }
 
@@ -32,7 +38,12 @@
         @media screen and (max-width: 480px) {
             width: 97%;
           }
-
+          @media screen and (min-width: 481px) and ( max-width: 768px){
+            width: 80%;
+        }
+        @media screen and (min-width: 769px) and ( max-width: 1024px){
+            width: 60%;   
+        }
 
 
         &_title {
@@ -121,6 +132,12 @@
             width: 97%;
           }
 
+          @media screen and (min-width: 481px) and ( max-width: 768px){
+            width: 80%;
+        }
+        @media screen and (min-width: 769px) and ( max-width: 1024px){
+            width: 60%;   
+        }
 
         &_add {
             display: flex;
@@ -141,6 +158,8 @@
                 @media screen and (max-width: 480px) {
                     width: 97%;
                   }
+
+                  
         
             }
 
@@ -225,3 +244,8 @@
     color: black;
     padding-right: 3px;
 }
+
+.one-post_username_color_username {
+    color: $color-2;
+}
+

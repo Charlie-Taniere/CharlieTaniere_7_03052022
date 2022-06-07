@@ -77,6 +77,15 @@ function Profile() {
                   navigate(`/post/${value.id}`)
                 }}
               >
+                {value.image !== null && (
+                  <div className="post-container_body_img">
+                    <img
+                      className="post-container_body_img_img"
+                      src={`http://localhost:3001/${value.image}`}
+                      alt="img from a post"
+                    />
+                  </div>
+                )}
                 {value.postText}
               </div>
               <div className="profil-container_post_footer">

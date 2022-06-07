@@ -51,9 +51,15 @@
     height: auto;
     left: 27.5% !important;
     top: 25% !important;
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 768px) {
         width: 85% !important;
         left: 7.5% !important;
+    }
+
+
+    @media screen and (min-width: 769px) and ( max-width: 1024px){
+        width: 65% !important;
+        left: 17.5% !important;
     }
 
 }
