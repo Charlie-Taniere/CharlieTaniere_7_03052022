@@ -9,7 +9,6 @@ function CreatePost(props) {
   const { authState } = useContext(AuthContext)
   const [image, setImage] = useState({ preview: '', data: '' })
   const [status, setStatus] = useState('')
-  // const [image, setImage] = useState('')
 
   const handleFileChange = (e) => {
     const img = {

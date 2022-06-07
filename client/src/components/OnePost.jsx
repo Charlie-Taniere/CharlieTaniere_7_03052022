@@ -22,10 +22,10 @@ function OnePost() {
     axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
       setComments(response.data)
     })
-  }, [])
+  }, [id])
 
-  const addComment = () => {
-    axios
+  const addComment = async () => {
+    await axios
       .post(
         'http://localhost:3001/comments',
         {
@@ -47,7 +47,7 @@ function OnePost() {
             username: response.data.username,
           }
           setComments([...comments, commentToAdd])
-          setNewComment({ commentText: '', id: null })
+          setNewComment('')
         }
       })
   }
@@ -67,13 +67,14 @@ function OnePost() {
   }
 
   const deletePost = (id) => {
-    axios
-      .delete(`http://localhost:3001/posts/${id}`, {
-        headers: { accessToken: localStorage.getItem('accessToken') },
-      })
-      .then(() => {
-        navigate('/')
-      })
+    axios.delete(`http://localhost:3001/posts/${id}`, {
+      headers: { accessToken: localStorage.getItem('accessToken') },
+      data: { image },
+    })
+
+    // .then(() => {
+    //   navigate('/')
+    // })
   }
 
   return (

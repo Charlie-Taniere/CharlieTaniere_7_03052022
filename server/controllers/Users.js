@@ -27,7 +27,7 @@ exports.login = async (req, res) => {
 
   const user = await Users.findOne({ where: { username: username } });
 try {
-  if (!user) return res.json({ error: "L'utilisaeur n'existe pas!" });
+  if (!user) return res.status(404).json({ error: "L'utilisaeur n'existe pas!" });
 } catch (error) {console.log(error)} 
 
   if (user) {

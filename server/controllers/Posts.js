@@ -13,6 +13,7 @@ exports.onePost = async (req, res) => {
   const id = req.params.id;
   const post = await Posts.findByPk(id);
   return res.json(post);
+
 };
 
 
@@ -56,15 +57,33 @@ exports.createPost = async (req, res) => {
 
 exports.deletePost = async (req, res) => {
   const postId = req.params.postId;
-  console.log(postId)
-//  await Posts.image.split('/images/')[1];
-//   fs.unlink(`images/${filename}`, () => {
-   Posts.destroy({
-    where: {
-      id: postId,
-    },
-  // });
-})
+  const headers = res.data
+  console.log(headers)
+//   const imagePath = `/images/${postId}`;
+//   fs.unlinkSync(imagePath);
+
+//    Posts.destroy({
+//     where: {
+//       id: postId,
+//     },
+
+// })
   return res.json("DELETED SUCCESSFULLY");
 };
 
+
+// exports.deletePost = async (req, res, next) => {
+//   const postId = req.params.postId;
+//   const userExist = await Posts.findOne({ where: { id: postId } });
+
+//   if (!userExist) {
+//     res.json({ error: "User Doesn't Exist" });
+//   } else {
+//     await Posts.destroy({
+//       where: {
+//         id: postId,
+//       },
+//     });
+//     return res.json("DELETED SUCCESSFULLY");
+//   }
+// };

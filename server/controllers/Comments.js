@@ -11,7 +11,7 @@ exports.postComment = async (req, res, next) => {
   const username = req.user.username;
   comment.username = username;
   await Comments.create(comment);
-  return res.json(comment);
+  return res.status(201).json(comment);
 };
 
 exports.deleteComment = async (req, res) => {
