@@ -58,10 +58,8 @@ exports.createPost = async (req, res) => {
 exports.deletePost = async (req, res) => {
   const postId = req.params.postId;
 const imageUrl  = await req.body.postObject.image;
-console.log(imageUrl)
-const image = await imageUrl.split('images')[1];
-console.log(image)
-  const  imagePath = await `/images/${image}`;
+const image = await imageUrl.split('\\')[1];
+  const  imagePath = await `./images/${image}`;
   fs.unlinkSync(imagePath);
 
    await Posts.destroy({
