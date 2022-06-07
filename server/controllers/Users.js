@@ -71,14 +71,14 @@ exports.changePassword = async (req, res, next) => {
   const user = await Users.findOne({ where: { username: req.user.username } });
 
   bcrypt.compare(oldPassword, user.password).then(async (match) => {
-    if (!match) res.json({ error: "Wrong Password Entered!" });
+    if (!match) res.json({ error: "Mauvais mot de passe" });
 
     bcrypt.hash(newPassword, 10).then(async (hash) => {
       Users.update(
         { password: hash },
         { where: { username: req.user.username } }
       );
-      res.json("SUCCESS");
+      res.json("Mot de passe changé");
     });
   });
 };

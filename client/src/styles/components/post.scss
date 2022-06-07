@@ -111,11 +111,12 @@
           }
           }
           &_buttons {
-            font-size: 25px;
-            flex: 50%;
+            font-size: 20px;
             display: flex;
             justify-content: flex-end;
             align-items: center;
+            cursor: pointer;
+
             @media screen and (max-width: 480px) {
               font-size: 20px;
               flex: 0%;
@@ -126,7 +127,7 @@
               margin-left: 10px;
             }
             
-          }         
+          }     
       }
       
   }

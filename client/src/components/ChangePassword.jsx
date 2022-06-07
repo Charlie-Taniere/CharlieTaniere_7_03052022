@@ -24,7 +24,7 @@ function ChangePassword() {
         if (response.data.error) {
           alert(response.data.error)
         } else {
-          alert("it's done !")
+          alert('Le mot de passe a bien été modifié!')
         }
       })
   }
@@ -33,7 +33,7 @@ function ChangePassword() {
     <div className="password-container">
       <input
         className="password-container_input"
-        type="text"
+        type="password"
         placeholder="Mot de passe actuel"
         onChange={(event) => {
           setOldPassword(event.target.value)
@@ -41,7 +41,7 @@ function ChangePassword() {
       />
       <input
         className="password-container_input"
-        type="text"
+        type="password"
         placeholder="Nouveau mot de passe"
         onChange={(event) => {
           setNewPassword(event.target.value)

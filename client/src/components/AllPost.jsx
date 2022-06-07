@@ -132,7 +132,7 @@ function AllPost() {
                   {value.Likes.length}
                 </label>
               </div>
-              <div className="post-container_footer_buttons">
+              {/* <div className="post-container_footer_buttons">
                 <FontAwesomeIcon
                   icon={faMessage}
                   className={
@@ -144,7 +144,7 @@ function AllPost() {
                   {' '}
                   {value.Likes.length}
                 </label>
-              </div>
+              </div> */}
             </div>
           </div>
         )

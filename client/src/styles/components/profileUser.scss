@@ -1,7 +1,9 @@
 .profil-container {
     display: flex;
     height: auto;
+    min-height: 75vh;
     width: 100%;
+
     flex-direction: column;
 
     &_h1 {
@@ -23,7 +25,7 @@
         display: flex;
         width: 100%;
         align-items: center;
-        margin: auto;
+        margin-left:  auto;
         justify-content: center;
 
         &_change-password, &_delete-account {
