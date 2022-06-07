@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 import { AuthContext } from '../helpers/AuthContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import { faThumbsUp, faMessage } from '@fortawesome/free-solid-svg-icons'
 
 function AllPost() {
   const [listOfPosts, setListOfPosts] = useState([])
@@ -123,6 +123,20 @@ function AllPost() {
                   onClick={() => {
                     likeAPost(value.id)
                   }}
+                  className={
+                    likedPosts.includes(value.id) ? 'unlikeBttn' : 'likeBttn'
+                  }
+                />
+
+                <label className="post-container_footer_buttons_label">
+                  {' '}
+                  {value.Likes.length}
+                </label>
+              </div>
+              <div className="post-container_footer_buttons">
+                <FontAwesomeIcon
+                  icon={faMessage}
+                  style={{ fontSize: 25, color: 'white' }}
                   className={
                     likedPosts.includes(value.id) ? 'unlikeBttn' : 'likeBttn'
                   }

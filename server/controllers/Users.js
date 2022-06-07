@@ -32,7 +32,8 @@ try {
 
   if (user) {
   bcrypt.compare(password, user.password).then(async (match) => {
-    if (!match) return res.status(403).json({ error: "Mot de passe érroné" });
+    if (!match) return res.status(403).json({ error: "Mot de passe erroné" });
+
 
     const accessToken = sign(
       { username: user.username, id: user.id, role: user.role, },
@@ -94,6 +95,6 @@ exports.deleteUser = async (req, res, next) => {
         id: userId,
       },
     });
-    res.json(`USER NBR ${userId} DELETED SUCCESSFULLY`);
+    res.json(`L'utisateur n° ${userId} a bien été supprimé`);
   }
 };
