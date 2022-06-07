@@ -69,7 +69,7 @@ function OnePost() {
   const deletePost = (id) => {
     axios.delete(`http://localhost:3001/posts/${id}`, {
       headers: { accessToken: localStorage.getItem('accessToken') },
-      data: { image },
+      data: { postObject },
     })
 
     // .then(() => {
