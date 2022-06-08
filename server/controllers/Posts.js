@@ -13,7 +13,6 @@ exports.onePost = async (req, res) => {
   const id = req.params.id;
   const post = await Posts.findByPk(id);
   return res.json(post);
-
 };
 
 
@@ -37,13 +36,15 @@ exports.createPost = async (req, res) => {
 };
 
 
-
   exports.modifyPost = async (req, res) => {
+  
+
   const postid = req.params.id;
-  const post = req.body;
+  const post = await req.body;
   post.username = req.user.username;
   post.UserId = req.user.id;
   post.image = req.file?.path;
+;
 
   await Posts.update(post,{                  
     where: {
@@ -57,33 +58,19 @@ exports.createPost = async (req, res) => {
 
 exports.deletePost = async (req, res) => {
   const postId = req.params.postId;
-const imageUrl  = await req.body.postObject.image;
-const image = await imageUrl.split('\\')[1];
+  const imageUrl  = await req.body.postObject.image;
+  try {
+  if (imageUrl !== null) {
+  const image = await imageUrl.split('\\')[1];
   const  imagePath = await `./images/${image}`;
   fs.unlinkSync(imagePath);
+  }
+} catch (error) {console.log("Problème: " + error)}
 
    await Posts.destroy({
     where: {
       id: postId,
     },
-
 })
   return res.json("DELETED SUCCESSFULLY");
 };
-
-
-// exports.deletePost = async (req, res, next) => {
-//   const postId = req.params.postId;
-//   const userExist = await Posts.findOne({ where: { id: postId } });
-
-//   if (!userExist) {
-//     res.json({ error: "User Doesn't Exist" });
-//   } else {
-//     await Posts.destroy({
-//       where: {
-//         id: postId,
-//       },
-//     });
-//     return res.json("DELETED SUCCESSFULLY");
-//   }
-// };
