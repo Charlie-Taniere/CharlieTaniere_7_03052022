@@ -19,6 +19,7 @@ function CreatePost(props) {
   }
 
   let navigate = useNavigate()
+
   const initialValues = {
     title: '',
     postText: '',
