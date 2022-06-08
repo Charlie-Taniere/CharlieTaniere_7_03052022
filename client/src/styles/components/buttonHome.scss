@@ -1,14 +1,24 @@
 .button-home {
     @include verticalCenter;
     width: auto;
-    height: 71vh;
-    padding-top: 10%;
+    height: 85vh;
+    padding-top: 15%;
 
     @media screen and (max-width: 480px) {
-        height: 72vh;
+        height: 87vh;
         flex-direction: column;
         padding-top: 0px;
     }
+
+    @media screen and (min-width: 481px) and (max-width: 768px) {
+        padding-top: 40%;
+    }
+
+    @media screen and (min-width: 769px) and (max-width: 1180px) {
+        padding-top: 30%;
+    }
+
+ 
 
     &_sign {
         display: flex;

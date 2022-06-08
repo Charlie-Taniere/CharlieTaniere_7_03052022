@@ -13,4 +13,5 @@ router.post("/", auth.token, multer, postCtrl.createPost);
 router.put("/byId/:id", auth.token, multer, postCtrl.modifyPost);
 router.delete("/:postId", auth.token, postCtrl.deletePost);
 
+
 module.exports = router;

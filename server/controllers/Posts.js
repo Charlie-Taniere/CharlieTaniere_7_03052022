@@ -74,3 +74,23 @@ exports.deletePost = async (req, res) => {
 })
   return res.json("DELETED SUCCESSFULLY");
 };
+
+// exports.deleteImage = async (req, res) => {
+//   const postId = req.params.postId;
+//   const imageUrl  = await req.body.previousPost.image;
+//   console.log(imageUrl + "aaaaaaaaaaaaaaaaaaaa")
+//   try {
+//   if (imageUrl !== null) {
+//   const image = await imageUrl.split('\\')[1];
+//   const  imagePath = await `./images/${image}`;
+//   fs.unlinkSync(imagePath);
+//   }
+// } catch (error) {console.log("Problème: " + error)}
+
+//    await Posts.image.destroy({
+//     where: {
+//       id: postId,
+//     },
+// })
+//   return res.json("DELETED SUCCESSFULLY");
+// };

@@ -33,7 +33,7 @@ function CreatePost(props) {
   }, [])
   const validationSchema = Yup.object().shape({
     title: Yup.string()
-      .min(1, '1 caractères minmum')
+      .min(3, '3 caractères minmum')
       .max(50, '50 caractères maximum')
       .required('Tu dois mettre un titre!'),
     postText: Yup.string()
@@ -86,19 +86,16 @@ function CreatePost(props) {
             autoComplete="off"
           />
 
-          {/* <input
-            id="file"
-            className="btn"
-            type="file"
-            name="image"
-            size="lg"
-            onChange={(e) => setImage(e.target.files[0])}
-          /> */}
-
           {image.preview && (
-            <img src={image.preview} width="100" height="100" />
+            <img
+              className="create-post-container_form_img"
+              src={image.preview}
+              width="100"
+              height="100"
+            />
           )}
           <input
+            className="create-post-container_form_input"
             id="file"
             type="file"
             name="image"

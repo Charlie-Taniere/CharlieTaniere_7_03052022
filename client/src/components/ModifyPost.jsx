@@ -18,14 +18,19 @@ function ModifyPost() {
     setImage(img)
   }
 
+  const [previousPost, setPreviousPost] = useState([])
+
   useEffect(() => {
-    axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {})
+    axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
+      setPreviousPost(response.data)
+      console.log(response.data)
+    })
   }, [id])
 
   let navigate = useNavigate()
   const initialValues = {
-    title: '',
-    postText: '',
+    title: previousPost.title,
+    postText: previousPost.postText,
     image: '',
   }
 
@@ -34,9 +39,10 @@ function ModifyPost() {
       navigate('/login')
     }
   }, [])
+
   const validationSchema = Yup.object().shape({
     title: Yup.string()
-      .min(1, '1 caractères minmum')
+      .min(3, '3 caractères minmum')
       .max(50, '50 caractères maximum')
       .required('Tu dois mettre un titre!'),
     postText: Yup.string()
@@ -60,6 +66,15 @@ function ModifyPost() {
         navigate('/')
       })
       .catch((error) => console.log('error put', error))
+  }
+
+  const deleteImage = async (id) => {
+    await axios.delete(`http://localhost:3001/posts/${id}`, {
+      headers: { accessToken: localStorage.getItem('accessToken') },
+      data: { image: previousPost.image },
+    })
+    console.log(previousPost.image)
+    console.log(image)
   }
 
   return (
@@ -97,15 +112,39 @@ function ModifyPost() {
             autoComplete="off"
           />
 
+          {previousPost.image && (
+            <img
+              className="modify-post-container_form_img"
+              src={`http://localhost:3001/${previousPost.image}`}
+              alt="img from a post"
+              width="100"
+              height="100"
+            />
+          )}
+
+          {previousPost.image && (
+            <button
+              type="button"
+              onClick={() => {
+                deleteImage(previousPost.id)
+              }}
+            >
+              Supprimer l'image
+            </button>
+          )}
+
           {image.preview && (
             <img src={image.preview} width="100" height="100" />
           )}
-          <input
-            id="file"
-            type="file"
-            name="image"
-            onChange={handleFileChange}
-          ></input>
+          {!previousPost.image && (
+            <input
+              className="modify-post-container_form_input"
+              id="file"
+              type="file"
+              name="image"
+              onChange={handleFileChange}
+            ></input>
+          )}
 
           <button type="submit" className="modify-post-container_form_button">
             {' '}
