@@ -1,29 +1,16 @@
-// const jwt = require("jsonwebtoken");
-
-// exports.token = (req, res, next) => {
-//   try {
-// const accessToken = req.headers.authorization.split(' ')[1];
-// const decodedToken = jwt.verify(accessToken, "SUPERSECRETTOKEN")
-// const userId = parseInt(decodedToken.userId)
-// console.log(decodedToken)
-//   if (req.body.userId && parseInt(req.body.userId) !== userId)
-//    {return res.json({ error: "User not logged in!" });}
-//   else {
-//     next()
-//   }
-// }
-// catch{res.status(401).json({error: "invalide requete"})}
-// };
+// Importation de la ressources 
 
 const jwt = require("jsonwebtoken");
+
+// Middleware d'authentification 
 
 module.exports.token = (req, res, next) => {
   const accessToken = req.header("accessToken");
 
-  if (!accessToken) return res.json({ error: "User not logged in!" });
+  if (!accessToken) return res.json({ error: "L'utilisateur n'est pas connecté!" });
 
   try {
-    const validToken = jwt.verify(accessToken, "SUPERSECRETTOKEN");
+    const validToken = jwt.verify(accessToken, "Akde3qff52486KIHJDZQ5241deJ");
     req.user = validToken;
     if (validToken) {
       return next();

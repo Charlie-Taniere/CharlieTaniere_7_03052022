@@ -1,3 +1,5 @@
+// Composant pour la connexion de l'utilisateur //
+
 import React, { useState, useContext } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router'
@@ -7,19 +9,19 @@ function Login() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const { setAuthState } = useContext(AuthContext)
-
   const [error, setError] = useState('')
-  console.log(error)
 
   let navigate = useNavigate()
+
   const login = () => {
     const data = { username: username, password: password }
     axios.post('http://localhost:3001/auth/login', data).then((response) => {
       if (response.data.error) {
         setError("L'utilisateur n'existe pas!")
       } else {
-        localStorage.setItem('accessToken', response.data.token)
+        localStorage.setItem('accessToken', response.data.token) // stockage du token dans le localstorage
         setAuthState({
+          // stockage des informations de l'utilisateur dans une variable global
           username: response.data.username,
           id: response.data.id,
           status: true,

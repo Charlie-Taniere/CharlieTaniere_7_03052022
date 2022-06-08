@@ -1,8 +1,9 @@
+// Composant pour récupérer tous les articles //
+
 import React, { useContext } from 'react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-
 import { AuthContext } from '../helpers/AuthContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp, faMessage } from '@fortawesome/free-solid-svg-icons'
@@ -10,9 +11,10 @@ import { faThumbsUp, faMessage } from '@fortawesome/free-solid-svg-icons'
 function AllPost() {
   const [listOfPosts, setListOfPosts] = useState([])
   const [likedPosts, setLikedPosts] = useState([])
-  const { authState } = useContext(AuthContext)
+
   let navigate = useNavigate()
 
+  // Récupération de la date de la création de l'article
   const dateFormater = (createdAt) => {
     let newDate = new Date(createdAt).toLocaleDateString('fr-FR', {
       year: 'numeric',
@@ -24,6 +26,7 @@ function AllPost() {
     return newDate
   }
 
+  // Fonction pour récupérer tous les articles et des likes associés
   useEffect(() => {
     if (!localStorage.getItem('accessToken')) {
       navigate('/')
@@ -43,6 +46,7 @@ function AllPost() {
     }
   }, [])
 
+  // Fonction pour l'ajout et le retrait d'un like
   const likeAPost = (postId) => {
     axios
       .post(

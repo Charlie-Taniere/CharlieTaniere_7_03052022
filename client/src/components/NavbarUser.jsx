@@ -1,3 +1,5 @@
+// Composant de la barre utilisateur //
+
 import React, { useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -20,6 +22,7 @@ const NavbarUser = () => {
   let navigate = useNavigate()
   const location = useLocation()
 
+  // Fonction qui permet à l'utilisateur de se déconnecter
   const logout = () => {
     localStorage.removeItem('accessToken')
     setAuthState({ username: '', id: 0, status: false }, navigate('/'))

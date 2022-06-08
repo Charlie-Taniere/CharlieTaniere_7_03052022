@@ -1,15 +1,24 @@
-import React, { useContext, useEffect, useState } from 'react'
+// Composant pour créer un article //
+
+import React, { useEffect, useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { AuthContext } from '../helpers/AuthContext'
 
 function CreatePost(props) {
-  const { authState } = useContext(AuthContext)
   const [image, setImage] = useState({ preview: '', data: '' })
-  const [status, setStatus] = useState('')
 
+  let navigate = useNavigate()
+
+  // Redirection sur la page d'accueil si l'uilisateur n'est pas connecté
+  useEffect(() => {
+    if (!localStorage.getItem('accessToken')) {
+      navigate('/login')
+    }
+  }, [])
+
+  // Fonction pour récupéré l'image et afficher sa mignature
   const handleFileChange = (e) => {
     const img = {
       preview: URL.createObjectURL(e.target.files[0]),
@@ -18,19 +27,14 @@ function CreatePost(props) {
     setImage(img)
   }
 
-  let navigate = useNavigate()
-
+  // Mise à zéro des inputs
   const initialValues = {
     title: '',
     postText: '',
     image: '',
   }
 
-  useEffect(() => {
-    if (!localStorage.getItem('accessToken')) {
-      navigate('/login')
-    }
-  }, [])
+  // Regex des inputs
   const validationSchema = Yup.object().shape({
     title: Yup.string()
       .min(3, '3 caractères minmum')
@@ -43,6 +47,7 @@ function CreatePost(props) {
     image: Yup.string(),
   })
 
+  // Fonction qui récupère et poste le titre, texte et image de l'article
   const onSubmit = async (data) => {
     let formData = new FormData()
     formData.append('image', image.data)
@@ -52,7 +57,7 @@ function CreatePost(props) {
       await axios.post('http://localhost:3001/posts', formData, {
         headers: { accessToken: localStorage.getItem('accessToken') },
       })
-      props.closeProps()
+      props.closeProps() // Utilisation de la props pour la fermeture de la fenêtre popup après la validation
       navigate(`/`)
     } catch (err) {
       alert(err)
@@ -106,11 +111,6 @@ function CreatePost(props) {
             {' '}
             Publier
           </button>
-
-          {/* <button type="submit" className="create-post-container_form_button">
-            {' '}
-            Publier
-          </button> */}
         </Form>
       </Formik>
     </div>

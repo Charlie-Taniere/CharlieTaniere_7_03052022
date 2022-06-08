@@ -1,3 +1,5 @@
+// Création du modèle des commentaires
+
 module.exports = (sequelize, DataTypes) => {
     const Comments = sequelize.define("Comments", {
       commentBody: {

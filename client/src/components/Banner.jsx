@@ -1,3 +1,5 @@
+// Composant de la banière
+
 import React, { useContext } from 'react'
 import groupomania from '../assets/groupomania.jpg'
 import { AuthContext } from '../helpers/AuthContext'

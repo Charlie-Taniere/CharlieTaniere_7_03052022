@@ -1,10 +1,15 @@
+// Importation des ressources
+
 const express = require("express");
 const router = express.Router();
 const auth = require('../middlewares/Auth');
 const multer = require("../middlewares/Multer")
 
+// Importation des controllers
 
 const postCtrl = require('../controllers/Posts'); 
+
+// Création des routes 
 
 router.get('/', auth.token, postCtrl.allPostsAndLikes);
 router.get('/byId/:id', postCtrl.onePost);

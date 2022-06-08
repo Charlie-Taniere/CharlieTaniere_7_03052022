@@ -1,3 +1,5 @@
+// Page du profil de l'utilisateur //
+
 import React from 'react'
 import Banner from '../components/Banner'
 import Footer from '../components/Footer'

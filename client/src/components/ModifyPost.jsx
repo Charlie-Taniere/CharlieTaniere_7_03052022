@@ -1,15 +1,34 @@
-import React, { useContext, useEffect, useState } from 'react'
+// Composant pour la modification d'un article //
+
+import React, { useEffect, useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
-import { AuthContext } from '../helpers/AuthContext'
 
 function ModifyPost() {
   let { id } = useParams()
-  const { authState } = useContext(AuthContext)
-  const [image, setImage] = useState({ preview: '', data: '' })
+  let navigate = useNavigate()
 
+  const [image, setImage] = useState({ preview: '', data: '' })
+  const [previousPost, setPreviousPost] = useState([])
+
+  // Redirection sur la page d'accueil si l'utilisateur n'est pas connecté
+  useEffect(() => {
+    if (!localStorage.getItem('accessToken')) {
+      navigate('/login')
+    }
+  }, [])
+
+  // Récupération des information de l'article à modifier
+  useEffect(() => {
+    axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
+      setPreviousPost(response.data)
+      console.log(response.data)
+    })
+  }, [id])
+
+  // Fonction pour récupéré l'image et afficher sa mignature
   const handleFileChange = (e) => {
     const img = {
       preview: URL.createObjectURL(e.target.files[0]),
@@ -18,28 +37,14 @@ function ModifyPost() {
     setImage(img)
   }
 
-  const [previousPost, setPreviousPost] = useState([])
-
-  useEffect(() => {
-    axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
-      setPreviousPost(response.data)
-      console.log(response.data)
-    })
-  }, [id])
-
-  let navigate = useNavigate()
+  // Affichage des ancienne valeurs de l'article à modifier
   const initialValues = {
     title: previousPost.title,
     postText: previousPost.postText,
     image: '',
   }
 
-  useEffect(() => {
-    if (!localStorage.getItem('accessToken')) {
-      navigate('/login')
-    }
-  }, [])
-
+  // Regex des inputs
   const validationSchema = Yup.object().shape({
     title: Yup.string()
       .min(3, '3 caractères minmum')
@@ -52,6 +57,7 @@ function ModifyPost() {
     image: Yup.string(),
   })
 
+  // Fonction qui poste les nouvelles valeurs de l'article modifié
   const onSubmit = (data) => {
     let formData = new FormData()
     formData.append('image', image.data)
@@ -68,6 +74,7 @@ function ModifyPost() {
       .catch((error) => console.log('error put', error))
   }
 
+  // Fonction pour la suppression de l'ancienne image
   const deleteImage = async (id) => {
     await axios.delete(`http://localhost:3001/posts/${id}`, {
       headers: { accessToken: localStorage.getItem('accessToken') },

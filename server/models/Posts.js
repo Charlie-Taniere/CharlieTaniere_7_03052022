@@ -1,3 +1,5 @@
+// Création du modèle des articles
+
 module.exports = (sequelize, DataTypes) => {
     const Posts = sequelize.define("Posts", {
       title: {
@@ -18,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
       },
     });
   
+    // Association des modèles Likes et Comments aux Posts 
+    // Utilisation de la méthode onDelete "cascade" pour la suppression des commentaires et des likes d'un post lors de la 
+    // supression du post 
+
     Posts.associate = (models) => {
       Posts.hasMany(models.Comments, {
         onDelete: "cascade",

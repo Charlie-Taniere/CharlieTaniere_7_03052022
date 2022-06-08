@@ -1,3 +1,5 @@
+// Page d'accueil //
+
 import Banner from '../components/Banner'
 import ButtonHome from '../components/ButtonHome'
 import Footer from '../components/Footer'

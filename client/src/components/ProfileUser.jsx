@@ -1,3 +1,8 @@
+// Composant pour l'affichage du profil de l'utilisateur //
+// Avec la liste de toutes ses publication //
+// Et la possibilité de modifier son mot de passe //
+// Et de supprimer son compte //
+
 import React, { useEffect, useState, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -12,6 +17,7 @@ function Profile() {
   const { authState } = useContext(AuthContext)
   const [displayPasswordIsOpen, setDisplayPassword] = useState(false)
 
+  // Récupération des informations de l'utilisateut et des ses articles
   useEffect(() => {
     axios.get(`http://localhost:3001/auth/basicinfo/${id}`).then((response) => {
       setUsername(response.data.username)
@@ -22,6 +28,7 @@ function Profile() {
     })
   }, [])
 
+  // Fonction pour supprimer le compte de l'utilisateur
   const deleteUser = () => {
     let res = confirm('Voulez-vous vraiment supprimer votre compte?')
     if (res) {
@@ -89,13 +96,8 @@ function Profile() {
                 {value.postText}
               </div>
               <div className="profil-container_post_footer">
-                {/* <div className="profil-container_post_footer_username">
-                  <p>Par </p>
-                  <p> {value.username}</p>
-                </div> */}
                 <div className="profil-container_post_footer_buttons">
                   <label className="profil-container_post_footer_buttons_label">
-                    {' '}
                     {value.Likes.length} likes
                   </label>
                 </div>

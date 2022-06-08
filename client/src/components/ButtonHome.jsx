@@ -1,11 +1,13 @@
+// Composant des boutons de connxions et d'enregistrement //
+
 import React from 'react'
 import Sign from '../auth/Sign'
 import Login from '../auth/Login'
 import { useState } from 'react'
 
 const ButtonHome = () => {
+  // Utilisation du Hook d'état pour l'affichage des deux boutons
   const [signIsOpen, setSign] = useState(false)
-
   const [loginIsOpen, setLogin] = useState(false)
 
   return (

@@ -38,7 +38,7 @@ try  {
 
     const accessToken = sign(
       { username: user.username, id: user.id, role: user.role, },
-      "SUPERSECRETTOKEN"
+      "Akde3qff52486KIHJDZQ5241deJ"
     );
     return res.status(200).json({ token: accessToken, username: username, id: user.id, role: user.role, });
   });
@@ -52,9 +52,7 @@ try  {
 
 
   exports.auth = (req, res) => {
-
      res.json(req.user);
-
     };
   
 
@@ -86,13 +84,16 @@ try {
 } catch (error) {console.log("Problème: " + error)}
 };
 
+
 exports.deleteUser = async (req, res, next) => {
   const userId = req.params.id;
   const userExist = await Users.findOne({ where: { id: userId } });
+ 
 try {
   if (!userExist) {
     res.json({ error: "User Doesn't Exist" });
   } else {
+    
     await Users.destroy({
       where: {
         id: userId,
@@ -101,4 +102,5 @@ try {
     res.json(`L'utisateur n° ${userId} a bien été supprimé`);
   }
 } catch (error) {console.log("Problème: " + error)}
+  
 };

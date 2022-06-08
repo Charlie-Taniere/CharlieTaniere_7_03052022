@@ -1,3 +1,6 @@
+// Composant qui récupère les informations d'un article particulier //
+// et permet de poster des commentaires //
+
 import React, { useEffect, useState, useContext } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
@@ -15,6 +18,7 @@ function OnePost() {
 
   let navigate = useNavigate()
 
+  // Récupération de l'article et des commentaires
   useEffect(() => {
     axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
       setPostObject(response.data)
@@ -24,6 +28,7 @@ function OnePost() {
     })
   }, [id])
 
+  // Fonction pour ajouter un commentaire
   const addComment = async () => {
     await axios
       .post(
@@ -52,6 +57,7 @@ function OnePost() {
       })
   }
 
+  // Fonction pour supprimer un commentaire
   const deleteComment = (id) => {
     axios
       .delete(`http://localhost:3001/comments/${id}`, {
@@ -66,6 +72,7 @@ function OnePost() {
       })
   }
 
+  // Fonction pour supprimer un article
   const deletePost = (id) => {
     axios
       .delete(`http://localhost:3001/posts/${id}`, {
@@ -140,7 +147,7 @@ function OnePost() {
           <textarea
             className="one-post_comment_add_input"
             type="text"
-            minLength="5"
+            minLength={5}
             placeholder="Écrivez votre commentaire ici.."
             autoComplete="off"
             value={newComment}

@@ -1,8 +1,14 @@
+// Importation des ressources 
+
 const express = require("express");
 const router = express.Router();
 const auth = require('../middlewares/Auth');
 
+// Importation des controllers 
+
 const userCtrl = require('../controllers/Users'); 
+
+// Création des routes 
 
 router.post('/signup', userCtrl.signup);
 router.post('/login', userCtrl.login);

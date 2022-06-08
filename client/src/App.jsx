@@ -16,6 +16,7 @@ const App = () => {
     status: false,
   })
 
+  // Fonction qui vérifie l'authentification de l'utilisateur
   useEffect(() => {
     axios
       .get('http://localhost:3001/auth/auth', {
@@ -27,6 +28,7 @@ const App = () => {
         if (response.data.error) {
           setAuthState({ ...authState, status: false })
         } else {
+          // stockage des informations de l'utilisateur dans une variable global
           setAuthState({
             username: response.data.username,
             id: response.data.id,

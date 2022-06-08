@@ -1,3 +1,5 @@
+// Page 404 //
+
 const NotFound = () => {
   return (
     <div className="not-found">

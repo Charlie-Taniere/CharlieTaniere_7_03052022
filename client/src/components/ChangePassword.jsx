@@ -1,7 +1,10 @@
+// Composant pour changer de mot de passe //
+
 import React, { useState } from 'react'
 import axios from 'axios'
 
 function ChangePassword() {
+  // Utilisation du Hook d'état pour récupérer les mots de passes des inputs
   const [oldPassword, setOldPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
 

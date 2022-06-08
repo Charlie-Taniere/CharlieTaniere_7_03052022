@@ -1,3 +1,5 @@
+// Composant pour l'enregistrement de l'utilisateur //
+
 import React, { useContext } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
@@ -7,14 +9,17 @@ import { useNavigate } from 'react-router'
 
 function Registration() {
   const { setAuthState } = useContext(AuthContext)
+
   let navigate = useNavigate()
 
+  // Mise à zéro des inputs
   const initialValues = {
     username: '',
     password: '',
     email: '',
   }
 
+  // Vérification des inputs
   const validationSchema = Yup.object().shape({
     username: Yup.string()
       .min(3, '3 caractères minimum')
@@ -30,6 +35,7 @@ function Registration() {
       .required('Ce champ est obligatoire'),
   })
 
+  // Récupération de la data des inputs et redirection sur la page main
   const onSubmit = (data) => {
     axios.post('http://localhost:3001/auth/signup', data).then(() => {
       axios.post('http://localhost:3001/auth/login', data).then((response) => {
