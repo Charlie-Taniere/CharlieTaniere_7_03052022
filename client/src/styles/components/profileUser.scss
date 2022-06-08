@@ -93,7 +93,8 @@
             display: flex;
             padding: 10px;
             resize: vertical;
-            word-break: break-all;
+            word-break: break-word;
+            padding: 20px;
 
             &_img {
                 display: flex;

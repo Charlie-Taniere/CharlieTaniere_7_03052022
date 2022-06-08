@@ -66,7 +66,7 @@ exports.deletePost = async (req, res) => {
   const  imagePath = await `./images/${image}`;
   fs.unlinkSync(imagePath);
   }
-  return res.json("DELETED SUCCESSFULLY");
+ 
 
 } catch (error) {console.log("Problème: " + error)}
 
@@ -75,4 +75,5 @@ exports.deletePost = async (req, res) => {
       id: postId,
     },
 })
+return res.json("DELETED SUCCESSFULLY");
 };

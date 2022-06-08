@@ -7,7 +7,7 @@ import OnePost from '../components/OnePost'
 
 const Post = () => {
   return (
-    <div>
+    <div className="post">
       <Banner />
       <OnePost />
       <Footer />
