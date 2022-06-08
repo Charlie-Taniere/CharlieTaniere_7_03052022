@@ -95,7 +95,7 @@ function AllPost() {
                 navigate(`/post/${value.id}`)
               }}
             >
-              {value.image !== null && (
+              {value.image && (
                 <div className="post-container_body_img">
                   <img
                     className="post-container_body_img_img"

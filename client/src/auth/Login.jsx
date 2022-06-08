@@ -15,21 +15,26 @@ function Login() {
 
   const login = () => {
     const data = { username: username, password: password }
-    axios.post('http://localhost:3001/auth/login', data).then((response) => {
-      if (response.data.error) {
-        setError("L'utilisateur n'existe pas!")
-      } else {
-        localStorage.setItem('accessToken', response.data.token) // stockage du token dans le localstorage
-        setAuthState({
-          // stockage des informations de l'utilisateur dans une variable global
-          username: response.data.username,
-          id: response.data.id,
-          status: true,
-          role: response.data.role,
-        })
-        navigate(`/main/${response.data.id}`)
-      }
-    })
+    axios
+      .post('http://localhost:3001/auth/login', data)
+      .then((response) => {
+        if (response.data.error) {
+        } else {
+          localStorage.setItem('accessToken', response.data.token) // stockage du token dans le localstorage
+          setAuthState({
+            // stockage des informations de l'utilisateur dans une variable global
+            username: response.data.username,
+            id: response.data.id,
+            status: true,
+            role: response.data.role,
+          })
+          navigate(`/main/${response.data.id}`)
+        }
+      })
+      .catch((error) => {
+        setError(error.response.data.error)
+        console.log(error)
+      })
   }
 
   return (

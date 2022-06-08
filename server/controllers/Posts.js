@@ -43,11 +43,10 @@ exports.createPost = async (req, res) => {
 // Modification d'un article
   exports.modifyPost = async (req, res) => {
   const postid = req.params.id;
-  const post = await req.body;
+  const post =  req.body;
   post.username = req.user.username;
   post.UserId = req.user.id;
-  post.image = req.file?.path;
-
+  post.image = req.file?.path || ""
   await Posts.update(post,{                  
     where: {
       id: postid,
@@ -62,11 +61,13 @@ exports.deletePost = async (req, res) => {
   const postId = req.params.postId;
   const imageUrl  = await req.body.postObject.image;
   try {
-  if (imageUrl !== null) {
+  if (imageUrl) {
   const image = await imageUrl.split('\\')[1];
   const  imagePath = await `./images/${image}`;
   fs.unlinkSync(imagePath);
   }
+  return res.json("DELETED SUCCESSFULLY");
+
 } catch (error) {console.log("Problème: " + error)}
 
    await Posts.destroy({
@@ -74,25 +75,4 @@ exports.deletePost = async (req, res) => {
       id: postId,
     },
 })
-  return res.json("DELETED SUCCESSFULLY");
 };
-
-// exports.deleteImage = async (req, res) => {
-//   const postId = req.params.postId;
-//   const imageUrl  = await req.body.previousPost.image;
-//   console.log(imageUrl + "aaaaaaaaaaaaaaaaaaaa")
-//   try {
-//   if (imageUrl !== null) {
-//   const image = await imageUrl.split('\\')[1];
-//   const  imagePath = await `./images/${image}`;
-//   fs.unlinkSync(imagePath);
-//   }
-// } catch (error) {console.log("Problème: " + error)}
-
-//    await Posts.image.destroy({
-//     where: {
-//       id: postId,
-//     },
-// })
-//   return res.json("DELETED SUCCESSFULLY");
-// };

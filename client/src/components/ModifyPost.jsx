@@ -11,7 +11,7 @@ function ModifyPost() {
   let navigate = useNavigate()
 
   const [image, setImage] = useState({ preview: '', data: '' })
-  const [previousPost, setPreviousPost] = useState([])
+  const [previousPost, setPreviousPost] = useState({})
 
   // Redirection sur la page d'accueil si l'utilisateur n'est pas connecté
   useEffect(() => {
@@ -74,16 +74,6 @@ function ModifyPost() {
       .catch((error) => console.log('error put', error))
   }
 
-  // Fonction pour la suppression de l'ancienne image
-  const deleteImage = async (id) => {
-    await axios.delete(`http://localhost:3001/posts/${id}`, {
-      headers: { accessToken: localStorage.getItem('accessToken') },
-      data: { image: previousPost.image },
-    })
-    console.log(previousPost.image)
-    console.log(image)
-  }
-
   return (
     <div className="modify-post-container">
       <Formik
@@ -119,7 +109,7 @@ function ModifyPost() {
             autoComplete="off"
           />
 
-          {previousPost.image && (
+          {previousPost?.image && (
             <img
               className="modify-post-container_form_img"
               src={`http://localhost:3001/${previousPost.image}`}
@@ -133,7 +123,8 @@ function ModifyPost() {
             <button
               type="button"
               onClick={() => {
-                deleteImage(previousPost.id)
+                // deleteImage(previousPost.id)
+                setPreviousPost({ ...previousPost, image: '' })
               }}
             >
               Supprimer l'image

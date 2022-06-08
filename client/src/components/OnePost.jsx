@@ -22,6 +22,7 @@ function OnePost() {
   useEffect(() => {
     axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
       setPostObject(response.data)
+      console.log('LIGNE 25', response.data)
     })
     axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
       setComments(response.data)
@@ -47,11 +48,13 @@ function OnePost() {
         if (response.data.error) {
           console.log(response.data.error)
         } else {
+          console.log('ligne 51 ', response.data)
           const commentToAdd = {
             commentBody: newComment,
             username: response.data.username,
           }
           setComments([...comments, commentToAdd])
+          console.log('ligne 56', comments)
           setNewComment('')
         }
       })
@@ -100,9 +103,8 @@ function OnePost() {
 
       <div className="one-post_container" id="individual">
         <div className="one-post_container_title">{postObject.title}</div>
-        {postObject.image !== null && (
+        {postObject?.image && (
           <div className="one-post_container_img">
-            {' '}
             <img
               className="one-post_container_img_img"
               src={`http://localhost:3001/${postObject.image}`}
