@@ -58,6 +58,9 @@ function OnePost() {
           setNewComment('')
         }
       })
+    axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
+      setComments(response.data)
+    })
   }
 
   // Fonction pour supprimer un commentaire
