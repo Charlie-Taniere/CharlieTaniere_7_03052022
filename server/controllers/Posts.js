@@ -1,7 +1,10 @@
+// Importation des ressources
+
 const { Posts, Likes } = require("../models");
 const fs = require('fs');
 
 
+// Récupération de tous les articles et des likes 
 exports.allPostsAndLikes = async (req, res) => {
   const listOfPosts = await Posts.findAll({ include: [Likes] });
   const likedPosts = await Likes.findAll({ where: { UserId: req.user.id } });
@@ -9,13 +12,14 @@ exports.allPostsAndLikes = async (req, res) => {
 
 }
 
+// Récupération d'un article 
 exports.onePost = async (req, res) => {
   const id = req.params.id;
   const post = await Posts.findByPk(id);
   return res.json(post);
 };
 
-
+// Récupération de tous les articles
 exports.listOfPosts = async (req, res) => {
   const id = req.params.id;
   const listOfPosts = await Posts.findAll({
@@ -25,6 +29,7 @@ exports.listOfPosts = async (req, res) => {
   return res.json(listOfPosts);
 };
 
+// Création d'un article
 exports.createPost = async (req, res) => {
     const post = req.body;
     post.username = req.user.username;
@@ -35,16 +40,13 @@ exports.createPost = async (req, res) => {
   }).catch(err => res.status(400).json(err.response));
 };
 
-
+// Modification d'un article
   exports.modifyPost = async (req, res) => {
-  
-
   const postid = req.params.id;
   const post = await req.body;
   post.username = req.user.username;
   post.UserId = req.user.id;
   post.image = req.file?.path;
-;
 
   await Posts.update(post,{                  
     where: {
@@ -55,7 +57,7 @@ exports.createPost = async (req, res) => {
   }).catch(err => res.status(400).json(err.response));
   }
 
-
+// Supression d'un article
 exports.deletePost = async (req, res) => {
   const postId = req.params.postId;
   const imageUrl  = await req.body.postObject.image;

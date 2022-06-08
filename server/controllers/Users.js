@@ -1,8 +1,10 @@
+// Importation des ressources 
 
 const { Users } = require("../models");
 const bcrypt = require("bcrypt");
 const { sign }  = require('jsonwebtoken');
 
+// Création d'un nouvel utilisaeur 
 
 exports.signup = async (req, res, next) => {
   const { username, email, password } = req.body;
@@ -21,6 +23,7 @@ exports.signup = async (req, res, next) => {
 .catch(error => res.status(500).json({ error }));
 };
 
+// Connexion à un compte déjà existant 
 
 exports.login = async (req, res) => {
   const { username, password } = req.body;
@@ -50,14 +53,15 @@ try  {
   
 };
 
+// Vérification de l'authentification de l'utilisateur
 
   exports.auth = (req, res) => {
      res.json(req.user);
     };
   
+// Accès aux informations de l'utilisateur 
 
   exports.basicInfo = async (req, res, next) => {
-
   const id = req.params.id;
   const basicInfo = await Users.findByPk(id, {
     attributes: { exclude: ["password"] },
@@ -65,6 +69,8 @@ try  {
 
   res.json(basicInfo);
 };
+
+// Modification d'un mot de passe
 
 exports.changePassword = async (req, res, next) => {
   const { oldPassword, newPassword } = req.body;
@@ -84,7 +90,7 @@ try {
 } catch (error) {console.log("Problème: " + error)}
 };
 
-
+// Supression d'un utilisateur 
 exports.deleteUser = async (req, res, next) => {
   const userId = req.params.id;
   const userExist = await Users.findOne({ where: { id: userId } });
