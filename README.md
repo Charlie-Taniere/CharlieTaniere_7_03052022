@@ -29,7 +29,7 @@ mkdir "nom_de_votre_dossier"
 cd "nom_de_votre_dossier"
 2 - Cloner le repository "server" dans le dossier que vous avez choisi
 
-git clone [https://github.com/Charlie-Taniere/P7.git]
+git clone [https://github.com/Charlie-Taniere/CharlieTaniere_7_19052022]
 
 3 - Installer le server
 
