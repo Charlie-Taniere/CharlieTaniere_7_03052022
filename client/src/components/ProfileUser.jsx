@@ -17,15 +17,34 @@ function Profile() {
   const { authState } = useContext(AuthContext)
   const [displayPasswordIsOpen, setDisplayPassword] = useState(false)
 
+  // Redirection sur la page d'accueil si l'uilisateur n'est pas connecté
+  useEffect(() => {
+    if (!localStorage.getItem('accessToken')) {
+      navigate('/login')
+    }
+  }, [])
+
   // Récupération des informations de l'utilisateut et des ses articles
   useEffect(() => {
-    axios.get(`http://localhost:3001/auth/basicinfo/${id}`).then((response) => {
-      setUsername(response.data.username)
-    })
+    axios
+      .get(`http://localhost:3001/auth/basicinfo/${id}`, {
+        headers: { accessToken: localStorage.getItem('accessToken') },
+      })
+      .then((response) => {
+        setUsername(response.data.username)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
 
-    axios.get(`http://localhost:3001/posts/byuserId/${id}`).then((response) => {
-      setListOfPosts(response.data)
-    })
+    axios
+      .get(`http://localhost:3001/posts/byuserId/${id}`)
+      .then((response) => {
+        setListOfPosts(response.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }, [])
 
   // Fonction pour supprimer le compte de l'utilisateur
