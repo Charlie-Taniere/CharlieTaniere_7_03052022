@@ -55,20 +55,20 @@ npm install</code>
 
 5 - Lancer le client
 <br>
-<code>cd client 
+<code>cd CharlieTaniere_7_03052022 
+  cd client 
 npm start </code>
 
 
-6 - Lancer le server
-
-<code>cd server
-nodemon server </code>
-
-7 - Se connecter à la database 
+6 - Se connecter à la database 
 
 La databse est déjà pré-configurée.
 
 Dans le Workbench MySQL créer une Local instance MySQL80 avec comme Hostname "localhost", Username "root", Password "password".
 Se connecter à l'instance, créer un schéma groupomania et importer le dossier comprenant le ficher de la BDD dans la table. 
 
+7 - Lancer le server
+
+<code>cd CharlieTaniere_7_03052022 
+node server </code> 
 </div>
