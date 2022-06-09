@@ -24,33 +24,34 @@ Installation
 
 1 - Créer un dossier
 
-mkdir "nom_de_votre_dossier"
+<code>mkdir "nom_de_votre_dossier"</code>
 
-cd "nom_de_votre_dossier"
+<code>cd "nom_de_votre_dossier"</code>
 2 - Cloner le repository "server" dans le dossier que vous avez choisi
 
-git clone [https://github.com/Charlie-Taniere/CharlieTaniere_7_19052022]
+<code>git clone [https://github.com/Charlie-Taniere/CharlieTaniere_7_19052022]</code>
 
 3 - Installer le server
 
-cd server
+<code>cd server</code>
 
-npm install
-npx sequelize
+<code>npm install
+npx sequelize</code>
 
 4 - Installer le client
 
-cd client
+<code>cd client
 
-npm install
+npm install</code>
 
 
 5 - Lancer le client
-cd client 
-npm start 
+<code>cd client 
+npm start </code>
 
 
 6 - Lancer le server
 
-nodemon server 
+<code>cd server
+nodemon server </code>
 
