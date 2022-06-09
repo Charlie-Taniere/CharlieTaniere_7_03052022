@@ -19,8 +19,8 @@ Technologies utilisées
 * [Sequelize](http://sequelize.org/)
 * [Nodemon](https://nodemon.io/)
 
-
-Installation
+<div>
+<h2>Installation</h2>
 
 1 - Créer un dossier
 
@@ -41,7 +41,6 @@ npx sequelize</code>
 4 - Installer le client
 
 <code>cd client
-
 npm install</code>
 
 
@@ -55,3 +54,4 @@ npm start </code>
 <code>cd server
 nodemon server </code>
 
+</div>
