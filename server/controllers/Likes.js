@@ -20,5 +20,5 @@ exports.like = async (req, res) => {
       });
       res.json({ liked: false });
     }
-  } catch (error) {console.log("Problème: " + error)}
+  } catch (error) { console.log("Problème: " + error) }
 };

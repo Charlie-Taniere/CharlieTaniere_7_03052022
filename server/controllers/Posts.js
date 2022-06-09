@@ -10,7 +10,6 @@ exports.allPostsAndLikes = async (req, res) => {
   const listOfPosts = await Posts.findAll({ include: [Likes] });
   const likedPosts = await Likes.findAll({ where: { UserId: req.user.id } });
   res.json({ listOfPosts: listOfPosts, likedPosts: likedPosts });
-
 }
 
 // Récupération d'un article 
@@ -32,30 +31,30 @@ exports.listOfPosts = async (req, res) => {
 
 // Création d'un article
 exports.createPost = async (req, res) => {
-    const post = req.body;
-    post.username = req.user.username;
-    post.UserId = req.user.id;
-    post.image = req.file?.path;
-    await Posts.create(post).then(()=>{
-      res.status(200).json(post);
+  const post = req.body;
+  post.username = req.user.username;
+  post.UserId = req.user.id;
+  post.image = req.file?.path;
+  await Posts.create(post).then(() => {
+    res.status(200).json(post);
   }).catch(err => res.status(400).json(err.response));
 };
 
 // Modification d'un article
-  exports.modifyPost = async (req, res) => {
+exports.modifyPost = async (req, res) => {
   const postid = req.params.id;
-  const post =  req.body;
+  const post = req.body;
   post.username = req.user.username;
   post.UserId = req.user.id;
   post.image = req.file?.path || ""
-  await Posts.update(post,{                  
+  await Posts.update(post, {
     where: {
       id: postid,
     },
-  }).then(()=>{
-      res.status(200).json("Article modifié!");
+  }).then(() => {
+    res.status(200).json("Article modifié!");
   }).catch(err => res.status(400).json(err.response));
-  }
+}
 
 // Supression d'un article
 exports.deletePost = async (req, res) => {
@@ -65,7 +64,7 @@ exports.deletePost = async (req, res) => {
     const token = req.headers.accesstoken
     const decodedToken = jwt.verify(token, "Akde3qff52486KIHJDZQ5241deJ");
     let userInfos = {
-      userId :decodedToken.userId,
+      userId: decodedToken.userId,
     }
     userId = decodedToken.userId;
 
@@ -73,28 +72,25 @@ exports.deletePost = async (req, res) => {
       throw "Invalid user ID";
     }
 
-  if (userInfos.userId < 0) {
-    return res.status(401).json({ error: "Wrong token" });
+    if (userInfos.userId < 0) {
+      return res.status(401).json({ error: "Wrong token" });
     }
 
     else {
-  
-  const imageUrl  = await req.body.postObject.image;
- 
-  if (imageUrl) {
-  const image = await imageUrl.split('\\')[1];
-  const  imagePath = await `./images/${image}`;
-  fs.unlinkSync(imagePath);
-  }
- 
+      const imageUrl = await req.body.postObject.image;
 
-} 
+      if (imageUrl) {
+        const image = await imageUrl.split('\\')[1];
+        const imagePath = await `./images/${image}`;
+        fs.unlinkSync(imagePath);
+      }
+    }
 
-   await Posts.destroy({
-    where: {
-      id: postId,
-    },
-})
-return res.json("DELETED SUCCESSFULLY");
-} catch (error) {console.log("Problème: " + error)}
+    await Posts.destroy({
+      where: {
+        id: postId,
+      },
+    })
+    return res.json("DELETED SUCCESSFULLY");
+  } catch (error) { console.log("Problème: " + error) }
 }
