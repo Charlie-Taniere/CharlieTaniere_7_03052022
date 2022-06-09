@@ -22,6 +22,11 @@
 * [Nodemon](https://nodemon.io/)
 
 <div>
+  
+  <h2>Prérequis</h2>
+  
+MySQL doit être installé sur votre machine
+  
 <h2>Installation</h2>
 
 1 - Créer un dossier
