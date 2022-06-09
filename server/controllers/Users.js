@@ -5,29 +5,6 @@ const bcrypt = require("bcrypt");
 const { sign }  = require('jsonwebtoken');
 const jwt = require("jsonwebtoken");
 
-
-const getInfosUserFromToken = (req, res) => {
-  try {
-    let userId = -1
-    const token = req.headers.accesstoken
-    const decodedToken = jwt.verify(token, "Akde3qff52486KIHJDZQ5241deJ");
-    let userInfos = {
-      userId :decodedToken.userId,
-    }
-    userId = decodedToken.userId;
-
-    if (userId == -1) {
-      throw "Invalid user ID";
-    } else {
-      return userInfos;
-    }
-  } catch (error) {
-    res.status(401).json({
-      error: new Error("Invalid request!"),
-    });
-  }
-}
-
 // Création d'un nouvel utilisaeur 
 
 exports.signup = async (req, res, next) => {
@@ -117,8 +94,19 @@ try {
 // Supression d'un utilisateur 
 exports.deleteUser = async (req, res) => {
 
-  let userInfos = getInfosUserFromToken(req, res);
   try {
+    let userId = -1
+    const token = req.headers.accesstoken
+    const decodedToken = jwt.verify(token, "Akde3qff52486KIHJDZQ5241deJ");
+    let userInfos = {
+      userId :decodedToken.userId,
+    }
+    userId = decodedToken.userId;
+
+    if (userId == -1) {
+      throw "Invalid user ID";
+    }
+
   if (userInfos.userId < 0) {
     return res.status(401).json({ error: "Wrong token" });
     }
@@ -147,4 +135,5 @@ exports.deleteUser = async (req, res) => {
 }
   
 };
+
 

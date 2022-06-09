@@ -2,6 +2,7 @@
 
 const { Posts, Likes } = require("../models");
 const fs = require('fs');
+const jwt = require("jsonwebtoken");
 
 
 // Récupération de tous les articles et des likes 
@@ -59,8 +60,27 @@ exports.createPost = async (req, res) => {
 // Supression d'un article
 exports.deletePost = async (req, res) => {
   const postId = req.params.postId;
-  const imageUrl  = await req.body.postObject.image;
   try {
+    let userId = -1
+    const token = req.headers.accesstoken
+    const decodedToken = jwt.verify(token, "Akde3qff52486KIHJDZQ5241deJ");
+    let userInfos = {
+      userId :decodedToken.userId,
+    }
+    userId = decodedToken.userId;
+
+    if (userId == -1) {
+      throw "Invalid user ID";
+    }
+
+  if (userInfos.userId < 0) {
+    return res.status(401).json({ error: "Wrong token" });
+    }
+
+    else {
+  
+  const imageUrl  = await req.body.postObject.image;
+ 
   if (imageUrl) {
   const image = await imageUrl.split('\\')[1];
   const  imagePath = await `./images/${image}`;
@@ -68,7 +88,7 @@ exports.deletePost = async (req, res) => {
   }
  
 
-} catch (error) {console.log("Problème: " + error)}
+} 
 
    await Posts.destroy({
     where: {
@@ -76,4 +96,5 @@ exports.deletePost = async (req, res) => {
     },
 })
 return res.json("DELETED SUCCESSFULLY");
-};
+} catch (error) {console.log("Problème: " + error)}
+}
