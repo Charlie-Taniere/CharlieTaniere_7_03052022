@@ -29,10 +29,11 @@
 <code>mkdir "nom_de_votre_dossier"</code>
 
 <code>cd "nom_de_votre_dossier"</code>
+
 <br>
 2 - Cloner le repository "server" dans le dossier que vous avez choisi
 
-<code>git clone [https://github.com/Charlie-Taniere/CharlieTaniere_7_19052022]</code>
+<code>git clone https://github.com/Charlie-Taniere/CharlieTaniere_7_19052022</code>
 
 3 - Installer le server
 
@@ -57,5 +58,12 @@ npm start </code>
 
 <code>cd server
 nodemon server </code>
+
+7 - Se connecter à la database 
+
+La databse est déjà pré-configurée.
+
+Dans le Workbench MySQL créer une Local instance MySQL80 avec comme Hostname "localhost", Username "root", Password "password".
+Se connecter à l'instance et importer le dossier comprenant les 4 fichers de la BDD. 
 
 </div>
