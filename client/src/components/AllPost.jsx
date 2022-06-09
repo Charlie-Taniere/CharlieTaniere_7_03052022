@@ -112,19 +112,18 @@ function AllPost() {
             <div className="post-container_footer">
               <div className="post-container_footer_username">
                 <p className="post-container_footer_username_p">
-                  {' '}
-                  Posté le {dateFormater(value.createdAt)} par{' '}
+                  Posté le {dateFormater(value.createdAt)} par
                 </p>
                 <Link
                   className="post-container_footer_username_a"
                   to={`/profile/${value.UserId}`}
                 >
-                  {' '}
-                  {value.username}{' '}
+                  {value.username}
                 </Link>
               </div>
               <div className="post-container_footer_buttons">
                 <FontAwesomeIcon
+                  aria-label="Bouton pour ajouter un like"
                   icon={faThumbsUp}
                   onClick={() => {
                     likeAPost(value.id)
@@ -135,23 +134,9 @@ function AllPost() {
                 />
 
                 <label className="post-container_footer_buttons_label">
-                  {' '}
                   {value.Likes.length}
                 </label>
               </div>
-              {/* <div className="post-container_footer_buttons">
-                <FontAwesomeIcon
-                  icon={faMessage}
-                  className={
-                    likedPosts.includes(value.id) ? 'unlikeBttn' : 'likeBttn'
-                  }
-                />
-
-                <label className="post-container_footer_buttons_label">
-                  {' '}
-                  {value.Likes.length}
-                </label>
-              </div> */}
             </div>
           </div>
         )

@@ -30,14 +30,21 @@ const NavbarUser = () => {
 
   return (
     <nav className="nav-user">
-      <button className="nav-user_config" onClick={logout}>
+      <button
+        className="nav-user_config"
+        aria-label="Bouton pour se déconnecter"
+        onClick={logout}
+      >
         <FontAwesomeIcon icon={faArrowRightFromBracket} />
       </button>
 
       {location.pathname.includes('main') && (
         <Popup
           trigger={
-            <button className="nav-user_config">
+            <button
+              className="nav-user_config"
+              aria-label="Bouton pour poster un article"
+            >
               <FontAwesomeIcon icon={faPlus} />
             </button>
           }
@@ -48,19 +55,28 @@ const NavbarUser = () => {
       )}
 
       {location.pathname.includes('profile') && (
-        <button className="nav-user_config" onClick={() => navigate(-1)}>
+        <button
+          className="nav-user_config"
+          aria-label="Bouton pour revenir en arrière"
+          onClick={() => navigate(-1)}
+        >
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
       )}
 
       {location.pathname.includes('post') && (
-        <button className="nav-user_config" onClick={() => navigate(-1)}>
+        <button
+          className="nav-user_config"
+          aria-label="Bouton pour revenir en arrière"
+          onClick={() => navigate(-1)}
+        >
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
       )}
 
       <button
         className="nav-user_config"
+        aria-label="Bouton pour accéder à son profil"
         onClick={() => navigate(`/profile/${id}`)}
       >
         <FontAwesomeIcon icon={faUser} />

@@ -8,11 +8,21 @@ import { faAt, faGlobe, faPhoneFlip } from '@fortawesome/free-solid-svg-icons'
 const Footer = () => {
   return (
     <footer className="footer">
-      <FontAwesomeIcon className="footer_icon" icon={faTwitter} />
-      <FontAwesomeIcon className="footer_icon" icon={faFacebook} />
-      <FontAwesomeIcon className="footer_icon" icon={faAt} />
-      <FontAwesomeIcon className="footer_icon" icon={faGlobe} />
-      <FontAwesomeIcon className="footer_icon" icon={faPhoneFlip} />
+      <a href="" alt="Logo de Twitter">
+        <FontAwesomeIcon className="footer_icon" icon={faTwitter} />
+      </a>
+      <a href="" alt="Logo de Facebook">
+        <FontAwesomeIcon className="footer_icon" icon={faFacebook} />
+      </a>
+      <a href="" alt="Logo d'un @">
+        <FontAwesomeIcon className="footer_icon" icon={faAt} />
+      </a>
+      <a href="" alt="Logo d'un globe">
+        <FontAwesomeIcon className="footer_icon" icon={faGlobe} />
+      </a>
+      <a href="" alt="Logo d'un téléphone">
+        <FontAwesomeIcon className="footer_icon" icon={faPhoneFlip} />
+      </a>
     </footer>
   )
 }
