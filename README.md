@@ -33,7 +33,7 @@
 <br>
 2 - Cloner le repository "server" dans le dossier que vous avez choisi
 
-<code>git clone https://github.com/Charlie-Taniere/CharlieTaniere_7_19052022</code>
+<code>git clone https://github.com/Charlie-Taniere/CharlieTaniere_7_03052022</code>
 
 3 - Installer le server
 
