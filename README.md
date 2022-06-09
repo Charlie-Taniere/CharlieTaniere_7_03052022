@@ -69,6 +69,6 @@ nodemon server </code>
 La databse est déjà pré-configurée.
 
 Dans le Workbench MySQL créer une Local instance MySQL80 avec comme Hostname "localhost", Username "root", Password "password".
-Se connecter à l'instance et importer le dossier comprenant les 4 fichers de la BDD. 
+Se connecter à l'instance, créer un schéma groupomania et importer le dossier comprenant le ficher de la BDD dans la table. 
 
 </div>
