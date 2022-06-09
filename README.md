@@ -1,17 +1,19 @@
 
+<h1>GROUPOMANIA</h1>
+
 
 <img src="https://user-images.githubusercontent.com/65371155/172706174-745a1587-681c-48db-a275-895030a04c0a.png" alt="Preview-Maquette-Groupomania" title="Preview-Groupomania" style="max-width: 100%;">
 
-Technologies utilisées 
+<h2>Technologies utilisées </h2>
 
-- Client
+<b>Client</b>
 
 * [ReactJS](https://fr.reactjs.org/)
 * [Sass](https://sass-lang.com/)
 * [Axios](https://axios-http.com/)
 
 
-- Server
+<b>Server</b>
 
 * [NodeJS](https://nodejs.org/en/)
 * [Express](https://expressjs.com/fr/)
@@ -27,6 +29,7 @@ Technologies utilisées
 <code>mkdir "nom_de_votre_dossier"</code>
 
 <code>cd "nom_de_votre_dossier"</code>
+<br>
 2 - Cloner le repository "server" dans le dossier que vous avez choisi
 
 <code>git clone [https://github.com/Charlie-Taniere/CharlieTaniere_7_19052022]</code>
@@ -45,6 +48,7 @@ npm install</code>
 
 
 5 - Lancer le client
+<br>
 <code>cd client 
 npm start </code>
 
