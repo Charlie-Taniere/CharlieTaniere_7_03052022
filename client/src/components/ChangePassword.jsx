@@ -23,12 +23,14 @@ function ChangePassword() {
         }
       )
       .then((response) => {
-        console.log(response)
         if (response.data.error) {
           alert(response.data.error)
         } else {
           alert('Le mot de passe a bien été modifié!')
         }
+      })
+      .catch((error) => {
+        console.log(error)
       })
   }
 

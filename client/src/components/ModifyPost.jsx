@@ -22,10 +22,15 @@ function ModifyPost() {
 
   // Récupération des information de l'article à modifier
   useEffect(() => {
-    axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
-      setPreviousPost(response.data)
-      console.log(response.data)
-    })
+    axios
+      .get(`http://localhost:3001/posts/byId/${id}`)
+      .then((response) => {
+        setPreviousPost(response.data)
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }, [id])
 
   // Fonction pour récupéré l'image et afficher sa mignature
@@ -71,7 +76,7 @@ function ModifyPost() {
         console.log(response)
         navigate('/')
       })
-      .catch((error) => console.log('error put', error))
+      .catch((error) => console.log(error))
   }
 
   return (

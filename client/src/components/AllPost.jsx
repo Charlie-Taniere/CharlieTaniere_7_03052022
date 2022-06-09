@@ -43,6 +43,9 @@ function AllPost() {
             })
           )
         })
+        .catch((error) => {
+          console.log(error)
+        })
     }
   }, [])
 

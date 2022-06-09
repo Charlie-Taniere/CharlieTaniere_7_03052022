@@ -38,20 +38,25 @@ function Registration() {
   // Récupération de la data des inputs et redirection sur la page main
   const onSubmit = (data) => {
     axios.post('http://localhost:3001/auth/signup', data).then(() => {
-      axios.post('http://localhost:3001/auth/login', data).then((response) => {
-        if (response.data.error) {
-          alert(response.data.error)
-        } else {
-          localStorage.setItem('accessToken', response.data.token)
-          setAuthState({
-            username: response.data.username,
-            id: response.data.id,
-            status: true,
-            role: response.data.role,
-          })
-          navigate(`/main/${response.data.id}`)
-        }
-      })
+      axios
+        .post('http://localhost:3001/auth/login', data)
+        .then((response) => {
+          if (response.data.error) {
+            alert(response.data.error)
+          } else {
+            localStorage.setItem('accessToken', response.data.token)
+            setAuthState({
+              username: response.data.username,
+              id: response.data.id,
+              status: true,
+              role: response.data.role,
+            })
+            navigate(`/main/${response.data.id}`)
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     })
   }
 

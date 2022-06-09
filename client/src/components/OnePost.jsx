@@ -20,13 +20,22 @@ function OnePost() {
 
   // Récupération de l'article et des commentaires
   useEffect(() => {
-    axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
-      setPostObject(response.data)
-      console.log('LIGNE 25', response.data)
-    })
-    axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
-      setComments(response.data)
-    })
+    axios
+      .get(`http://localhost:3001/posts/byId/${id}`)
+      .then((response) => {
+        setPostObject(response.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    axios
+      .get(`http://localhost:3001/comments/${id}`)
+      .then((response) => {
+        setComments(response.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }, [id])
 
   // Fonction pour ajouter un commentaire
@@ -48,19 +57,25 @@ function OnePost() {
         if (response.data.error) {
           console.log(response.data.error)
         } else {
-          console.log('ligne 51 ', response.data)
           const commentToAdd = {
             commentBody: newComment,
             username: response.data.username,
           }
           setComments([...comments, commentToAdd])
-          console.log('ligne 56', comments)
           setNewComment('')
         }
       })
-    axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
-      setComments(response.data)
-    })
+      .catch((error) => {
+        console.log(error)
+      })
+    axios
+      .get(`http://localhost:3001/comments/${id}`)
+      .then((response) => {
+        setComments(response.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
   // Fonction pour supprimer un commentaire
@@ -76,6 +91,9 @@ function OnePost() {
           })
         )
       })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
   // Fonction pour supprimer un article
@@ -88,6 +106,9 @@ function OnePost() {
 
       .then(() => {
         navigate('/')
+      })
+      .catch((error) => {
+        console.log(error)
       })
   }
 
