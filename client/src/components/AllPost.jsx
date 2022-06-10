@@ -88,59 +88,61 @@ function AllPost() {
 
   return (
     <div>
-      {listOfPosts.map((value, key) => {
-        return (
-          <div key={key} className="post-container">
-            <div className="post-container_title"> {value.title} </div>
-            <div
-              className="post-container_body"
-              onClick={() => {
-                navigate(`/post/${value.id}`)
-              }}
-            >
-              {value.image && (
-                <div className="post-container_body_img">
-                  <img
-                    className="post-container_body_img_img"
-                    src={`http://localhost:3001/${value.image}`}
-                    alt="img from a post"
-                  />
+      {listOfPosts
+        .sort((a, b) => b.id - a.id)
+        .map((value, key) => {
+          return (
+            <div key={key} className="post-container">
+              <div className="post-container_title"> {value.title} </div>
+              <div
+                className="post-container_body"
+                onClick={() => {
+                  navigate(`/post/${value.id}`)
+                }}
+              >
+                {value.image && (
+                  <div className="post-container_body_img">
+                    <img
+                      className="post-container_body_img_img"
+                      src={`http://localhost:3001/${value.image}`}
+                      alt="img from a post"
+                    />
+                  </div>
+                )}
+                <div className="post-container_body_body">{value.postText}</div>
+              </div>
+              <div className="post-container_footer">
+                <div className="post-container_footer_username">
+                  <p className="post-container_footer_username_p">
+                    Posté le {dateFormater(value.createdAt)} par
+                  </p>
+                  <Link
+                    className="post-container_footer_username_a"
+                    to={`/profile/${value.UserId}`}
+                  >
+                    {value.username}
+                  </Link>
                 </div>
-              )}
-              <div className="post-container_body_body">{value.postText}</div>
-            </div>
-            <div className="post-container_footer">
-              <div className="post-container_footer_username">
-                <p className="post-container_footer_username_p">
-                  Posté le {dateFormater(value.createdAt)} par
-                </p>
-                <Link
-                  className="post-container_footer_username_a"
-                  to={`/profile/${value.UserId}`}
-                >
-                  {value.username}
-                </Link>
-              </div>
-              <div className="post-container_footer_buttons">
-                <FontAwesomeIcon
-                  aria-label="Bouton pour ajouter un like"
-                  icon={faThumbsUp}
-                  onClick={() => {
-                    likeAPost(value.id)
-                  }}
-                  className={
-                    likedPosts.includes(value.id) ? 'unlikeBttn' : 'likeBttn'
-                  }
-                />
+                <div className="post-container_footer_buttons">
+                  <FontAwesomeIcon
+                    aria-label="Bouton pour ajouter un like"
+                    icon={faThumbsUp}
+                    onClick={() => {
+                      likeAPost(value.id)
+                    }}
+                    className={
+                      likedPosts.includes(value.id) ? 'unlikeBttn' : 'likeBttn'
+                    }
+                  />
 
-                <label className="post-container_footer_buttons_label">
-                  {value.Likes.length}
-                </label>
+                  <label className="post-container_footer_buttons_label">
+                    {value.Likes.length}
+                  </label>
+                </div>
               </div>
             </div>
-          </div>
-        )
-      })}
+          )
+        })}
     </div>
   )
 }
